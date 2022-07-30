@@ -30,8 +30,9 @@ for i, code in enumerate(codeList2):
     print(i, code, secondCode, stdPrice, name)
  
 print("거래소 + 코스닥 종목코드 ",len(codeList) + len(codeList2))
+
 ```
 
 ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1dfba20-b385-45cc-b24c-3de8c00ab5af/Untitled.png)
 
->> 실행결과 겁나 많은 주식 종목들이 뜸 총 3404개..
+>> 실행결과 겁나 많은 주식 종목들이 뜸 총 3404개.. */

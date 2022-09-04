@@ -1,4 +1,4 @@
-const mongoose = requie('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     name: {
@@ -24,13 +24,17 @@ const userSchema = mongoose.Schema({
         type: String
     },
     phone:{
-        type: string
+        type: String
     },
     coinApiKey:{
-        type: string
+        type: String
     },
     stockApiKey:{
-        type: string
+        type: String
+    },
+    role:{
+        type: Number,
+        default: 0
     },
     token: {
         //유효성 관리할 떄 token이 필요함.

@@ -24,18 +24,15 @@ request(options, (error, response, body) => {
     console.log(body)
 })
 
-const data = null;
+async function market_minute(market, unit, to, count) {
+    //unit:  1, 3, 5, 15, 10, 30, 60, 240
+    //to: yyyy-MM-dd'T'HH:mm:ssXXX
+    const url = 'https://api.upbit.com/v1/candles/minutes/'+unit
+    let qs = {market:market}
+    if (to) qs.to = to
+    if (count) qs.count = count
 
-const xhr = new XMLHttpRequest();
-xhr.withCredentials = true;
+    let result = await request(url, qs)
+    return result
+}
 
-xhr.addEventListener('readystatechange', function () {
-  if (this.readyState === this.DONE) {
-    console.log(this.responseText);
-  }
-});
-
-xhr.open('GET', 'https://api.upbit.com/v1/candles/minutes/1?market=KRW-BTC&count=1');
-xhr.setRequestHeader('Accept', 'application/json');
-
-xhr.send(data);

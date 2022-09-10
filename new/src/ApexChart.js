@@ -4,6 +4,8 @@ import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
 
+
+
 export default function ApexChart(){
     const [coinInfo, setcoinInfo] = useState([]);
     const [coin__, setcoin__] = useState(coinList);
@@ -18,10 +20,6 @@ export default function ApexChart(){
           }
       }
       })
-    }
-    const onOver = (id) =>{
-      const num = coin__.findIndex(item => item.rank===id)
-      setcoin__(coin__[num])
     }
 
     useEffect(() => {

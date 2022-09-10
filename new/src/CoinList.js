@@ -44,7 +44,32 @@ const coininfo = [
             "tag": "ETC",
             "name_ko": "이더리움클래식",
             "currency": "KRW"
-        }
+        },
+        {
+            "tag": "ADA",
+            "name_ko": "에이다",
+            "currency": "KRW"
+        },
+        {
+            "tag": "SAND",
+            "name_ko": "샌드박스",
+            "currency": "KRW"
+        },
+        {
+            "tag": "EOS",
+            "name_ko": "이오스",
+            "currency": "KRW"
+        },
+        {
+            "tag": "SOL",
+            "name_ko": "솔라나",
+            "currency": "KRW"
+        },
+        {
+            "tag": "DOGE",
+            "name_ko": "도지코인",
+            "currency": "KRW"
+        },
 ];
 
 class CoinList extends React.Component{

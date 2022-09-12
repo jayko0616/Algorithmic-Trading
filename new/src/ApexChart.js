@@ -1,14 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {Component, useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
-import coinList from './coinList.json'
+// import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
+import Layout from "./Layout/Layout";
 
 
 
-export default function ApexChart(){
+export default function ApexChart(obj){
     const [coinInfo, setcoinInfo] = useState([]);
-    const [coin__, setcoin__] = useState(coinList);
+    // const [coin__, setcoin] =useState('BTC');
+    
 //Upbit API
     const getApi = async(coin_name) =>{
       await axios.get('https://api.upbit.com/v1/candles/minutes/60?market=KRW-'+ coin_name +'&count=100').then((res) =>{
@@ -23,8 +25,11 @@ export default function ApexChart(){
     }
 
     useEffect(() => {
-      getApi('BTC');
-    }, [])
+      getApi(obj.coin__);
+      // getApi('BTC');
+      console.log(obj);
+    },[])
+
 
     const [time, setTime] = useState([]);
     const [open, setOpen] = useState([]);
@@ -38,6 +43,7 @@ export default function ApexChart(){
     close.length = 0;
     high.length = 0;
     data_ex.length = 0;
+
 
     // console.log(xrpInfo)
     coinInfo.map(({candle_date_time_kst, opening_price, high_price, low_price, trade_price}) =>{

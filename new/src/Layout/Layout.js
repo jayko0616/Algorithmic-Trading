@@ -7,16 +7,18 @@ import CoinList from '../CoinList';
 
 const Layout = () => {
   const [count, setCount] = useState(0);
+
   useEffect(()=>{
-    document.title = 'You clicked times';
+    document.title = 'You clicked time';
   });
+
   return (
     <div className='layout'>
       <Header/>
       <body>
         <main className='main'>
-        <ApexChart></ApexChart>
-        <CoinList></CoinList>
+          <ApexChart coin__ = 'ETH'></ApexChart>
+          <CoinList></CoinList>
         </main>
       </body>
       <Footer/>

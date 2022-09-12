@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
-import { TableHead } from "@material-ui/core";
 import ApexChart from "./ApexChart";
 
 
 class CoinItem extends React.Component{
-    ref = React.createRef();
+
 
     handleclick = () =>{
-        ApexChart.getApi(this.props.tag);
+        console.log(this.props.tag);
+        return(<ApexChart obj={this.props.tag}/>);
     }
     render(){
         return(

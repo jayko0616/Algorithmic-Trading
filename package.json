@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "apexcharts": "^3.35.4",
+    "concurrently": "^7.4.0",
     "react-apexcharts": "^1.4.0"
   },
   "name": "coin_trading_project",

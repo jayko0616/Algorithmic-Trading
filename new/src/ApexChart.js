@@ -1,16 +1,19 @@
-import React, {Component, useEffect, useState} from "react";
+import React, {Component,createContext ,useContext, useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
 // import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
 import Layout from "./Layout/Layout";
+import CoinItem from "./CoinItem";
+import { CoinContext } from "./CoinStore";
 
-
-
-export default function ApexChart(obj){
+export default function ApexChart(){
     const [coinInfo, setcoinInfo] = useState([]);
+    // const [name,setname] = useState(['BTC']);
+    const coin_name_ = useContext(CoinContext);
+    console.log(coin_name_);
     // const [coin__, setcoin] =useState('BTC');
-    
+    // setname(props.coin_data);
 //Upbit API
     const getApi = async(coin_name) =>{
       await axios.get('https://api.upbit.com/v1/candles/minutes/60?market=KRW-'+ coin_name +'&count=100').then((res) =>{
@@ -25,11 +28,11 @@ export default function ApexChart(obj){
     }
 
     useEffect(() => {
-      getApi(obj.coin__);
+      getApi(coin_name_);
       // getApi('BTC');
-      console.log(obj);
+      // setname(props.coin_data);
+      // console.log(coin_name_);
     },[])
-
 
     const [time, setTime] = useState([]);
     const [open, setOpen] = useState([]);
@@ -118,8 +121,12 @@ export default function ApexChart(obj){
 
       return (
   <div id="chart">
-{/* <ReactApexChart options={options} series={series} type="candlestick" height={400} /> */}
+    {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
 <ReactApexChart options={options} series={series} type="candlestick" height={400} width={600}/>
   </div>
       );
 }
+
+
+// export default connect(mapStateToProps)(ApexChart);
+// export default ApexChart;

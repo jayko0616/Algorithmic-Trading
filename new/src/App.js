@@ -28,12 +28,12 @@ import CoinStore from './CoinStore';
 
 export default function App(){
   return(
-    <CoinStore>
+    // <CoinStore>
       <Layout>
         <Container style={{minHeight:'75vh'}}>
         </Container>
       </Layout>
-    </CoinStore>
+    // </CoinStore>
   );
 }
 

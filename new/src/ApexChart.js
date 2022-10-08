@@ -6,11 +6,14 @@ import axios from 'axios'
 import Layout from "./Layout/Layout";
 import CoinItem from "./CoinItem";
 import { CoinContext } from "./CoinStore";
+import {useSelector} from "react-redux";
+
 
 export default function ApexChart(){
     const [coinInfo, setcoinInfo] = useState([]);
     // const [name,setname] = useState(['BTC']);
-    const coin_name_ = useContext(CoinContext);
+    // const coin_name_ = useContext(CoinContext);
+    const coin_name_ = useSelector((store)=>store.str);
     console.log(coin_name_);
     // const [coin__, setcoin] =useState('BTC');
     // setname(props.coin_data);

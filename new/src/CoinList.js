@@ -9,7 +9,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
 import { withStyles } from "@material-ui/core/styles";
-
+import { CoinContext, CoinDispatchContext } from "./CoinStore";
 
 // const styles = theme => ({
 //     root: {
@@ -77,7 +77,6 @@ class CoinList extends React.Component{
         // const { classes } = this.props;
 
         return(
-            // <Paper className = {classes.root}>
             <div>
                 {/* <Table className = {classes.table}> */}
                 <Table>
@@ -96,7 +95,7 @@ class CoinList extends React.Component{
             {/* </Paper> */}
             </div>
         )
-}
+    }
 }
 
 // export default withStyles(styles)(CoinList);

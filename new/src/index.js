@@ -3,15 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import CoinStore from './CoinStore';
+import {Provider} from "redux-redux";
+import {legacy_createStore as createStore} from "redux";
+import reducer from './CoinStore';
 
+const store = createStore(reducer);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CoinStore>
+    <Provider store={store}>
       <App />
-    </CoinStore>
+    </Provider>
   </React.StrictMode>
 );
 

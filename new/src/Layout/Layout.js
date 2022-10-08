@@ -4,7 +4,7 @@ import Header from './Header';
 import './Layout.css'
 import ApexChart from '../ApexChart';
 import CoinList from '../CoinList';
-import { CoinContext } from '../CoinStore';
+// import { CoinContext } from '../CoinStore';
 
 
 // class Layout extends React.Component{
@@ -17,7 +17,6 @@ export default function Layout (){
   // });
   // render(){
     return (
-      <CoinContext.Provider value="BTC">
         <div className='layout'>
           <Header/>
           <body>
@@ -28,7 +27,6 @@ export default function Layout (){
           </body>
           <Footer/>
         </div>
-      </CoinContext.Provider>
     )
   }
 // }

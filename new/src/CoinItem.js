@@ -6,17 +6,19 @@ import TableCell from '@material-ui/core/TableCell';
 import {createContext} from 'react';
 // import { useContext } from "react";
 import { CoinContext, CoinDispatchContext } from "./CoinStore";
-// import ApexChart from "./ApexChart";
+import ApexChart from "./ApexChart";
 // import { setCoins } from "./redux/action";
 
 
-// const CoinType = useContext(CoinContext);
-// const coin_Dispatch = useContext(CoinDispatchContext);
+
 // class CoinItem extends React.Component{
-    function handleclick (){
-        console.log(this.props.tag)
-        this.state.coin_Dispatch({type:this.props.tag})
+    function handleclick (props){
+        // const CoinType = useContext(CoinContext);
+        // const coin_Dispatch = useContext(CoinDispatchContext);
+        // console.log(props.tag)
+        // this.state.coin_Dispatch({type:this.props.tag})
         // setCoins(this.props.tag);
+        console.log(props);
     }
 
     function CoinItem(props){
@@ -28,9 +30,9 @@ import { CoinContext, CoinDispatchContext } from "./CoinStore";
     // render(){
         return(
             <TableRow className="Table_coin">
-                <TableCell onClick={()=>handleclick}>{props.tag}</TableCell>
-                <TableCell onClick={()=>handleclick}>{props.name_ko}</TableCell>
-                <TableCell onClick={()=>handleclick}>{props.currency}</TableCell>
+                <TableCell onClick={()=>handleclick(props)}>{props.tag}</TableCell>
+                <TableCell onClick={()=>handleclick(props)}>{props.name_ko}</TableCell>
+                <TableCell onClick={()=>handleclick(props)}>{props.currency}</TableCell>
             </TableRow>
         )
     }

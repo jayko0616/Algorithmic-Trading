@@ -4,6 +4,7 @@ import ApexChart from './ApexChart';
 import CoinList from './CoinList';
 import Layout from './Layout/Layout';
 import CoinStore from './CoinStore';
+import CoinChange from './CoinChange';
 // import {BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 
 
@@ -28,12 +29,10 @@ import CoinStore from './CoinStore';
 
 export default function App(){
   return(
-    // <CoinStore>
       <Layout>
         <Container style={{minHeight:'75vh'}}>
         </Container>
       </Layout>
-    // </CoinStore>
   );
 }
 

@@ -14,7 +14,7 @@ export default function ApexChart(){
     // const [name,setname] = useState(['BTC']);
     // const coin_name_ = useContext(CoinContext);
     const coin_name_ = useSelector((store)=>store.str);
-    console.log(coin_name_);
+    // console.log(coin_name_);
     // const [coin__, setcoin] =useState('BTC');
     // setname(props.coin_data);
 //Upbit API
@@ -31,11 +31,12 @@ export default function ApexChart(){
     }
 
     useEffect(() => {
+      // console.log(coin_name_);
       getApi(coin_name_);
       // getApi('BTC');
       // setname(props.coin_data);
       // console.log(coin_name_);
-    },[])
+    },[coin_name_])
 
     const [time, setTime] = useState([]);
     const [open, setOpen] = useState([]);

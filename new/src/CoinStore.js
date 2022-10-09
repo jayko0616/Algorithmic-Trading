@@ -1,13 +1,14 @@
-export const Changecoin = () =>({type:'XRP', str:'XRP'});
+export const change_coin = (props) =>({type: 'XRP' , str:props});
 
 const initState = {
+    type:'BTC',
     str:'BTC'
 }
 
 export const reducer = (state = initState, action)=>{
     switch(action.type){
         case 'XRP':
-            return {str:state.str}
+            return {str:action.str}
         default:
             return state;
     }

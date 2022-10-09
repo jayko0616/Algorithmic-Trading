@@ -8,20 +8,19 @@ import {createContext} from 'react';
 import { CoinContext, CoinDispatchContext } from "./CoinStore";
 import ApexChart from "./ApexChart";
 // import { setCoins } from "./redux/action";
-
+import {useDispatch} from "react-redux";
+import {change_coin} from './CoinStore';
+import CoinChange from './CoinChange';
 
 
 // class CoinItem extends React.Component{
-    function handleclick (props){
-        // const CoinType = useContext(CoinContext);
-        // const coin_Dispatch = useContext(CoinDispatchContext);
-        // console.log(props.tag)
-        // this.state.coin_Dispatch({type:this.props.tag})
-        // setCoins(this.props.tag);
-        console.log(props);
-    }
 
     function CoinItem(props){
+        const disPatch = useDispatch();
+        const handleclick = (props) =>{
+            console.log(props);
+            disPatch(change_coin(props.tag));
+        }
     // export default function CoinItem(){
     // coinProvider = () =>{
     //     const coin = this.props.tag;

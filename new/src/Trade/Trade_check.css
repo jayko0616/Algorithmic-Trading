@@ -1,0 +1,23 @@
+.Table_trade{
+    width: 600px;
+    /* display: flex; */
+    padding-top: 80px;
+    padding-left: 40px;
+    /* font-size: 50px; */
+}
+
+
+.Table_buying{
+    width: 33%;
+    font-size: 20px;
+}
+
+.Table_selling{
+    width: 33%;
+    font-size: 20px;
+}
+
+.Table_bill{
+    width: 33%;
+    font-size: 20px;
+}

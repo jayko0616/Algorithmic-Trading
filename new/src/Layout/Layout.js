@@ -2,20 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import './Layout.css'
-import ApexChart from '../ApexChart';
-import CoinList from '../CoinList';
-// import { CoinContext } from '../CoinStore';
+import ApexChart from '../Coin_chart/ApexChart';
+import CoinList from '../Coin_chart/CoinList';
+import Trade_check from '../Trade/Trade_check';
 
-
-// class Layout extends React.Component{
 export default function Layout (){
 
-  // const [count, setCount] = useState(0);
-
-  // useEffect(()=>{
-  //   document.title = 'You clicked time';
-  // });
-  // render(){
     return (
         <div className='layout'>
           <Header/>
@@ -23,6 +15,7 @@ export default function Layout (){
             <main className='main'>
               <ApexChart></ApexChart>
               <CoinList></CoinList>
+              <Trade_check></Trade_check>
             </main>
           </body>
           <Footer/>

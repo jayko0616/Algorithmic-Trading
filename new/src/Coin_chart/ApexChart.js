@@ -3,7 +3,7 @@ import ReactApexChart from "react-apexcharts";
 // import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
-import Layout from "./Layout/Layout";
+import Layout from "../Layout/Layout";
 import CoinItem from "./CoinItem";
 import { CoinContext } from "./CoinStore";
 import {useSelector} from 'react-redux';

@@ -1,10 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import ApexChart from './ApexChart';
-import CoinList from './CoinList';
 import Layout from './Layout/Layout';
-import CoinStore from './CoinStore';
-import CoinChange from './CoinChange';
 // import {BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 
 

@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.6",
     "apexcharts": "^3.35.4",
     "concurrently": "^7.4.0",
     "next-redux-wrapper": "^8.0.0",

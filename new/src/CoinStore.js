@@ -1,7 +1,7 @@
 export const Changecoin = () =>({type:'XRP', str:'XRP'});
 
 const initState = {
-    str:'XRP'
+    str:'BTC'
 }
 
 export const reducer = (state = initState, action)=>{

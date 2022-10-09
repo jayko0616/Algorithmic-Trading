@@ -6,7 +6,7 @@ import axios from 'axios'
 import Layout from "./Layout/Layout";
 import CoinItem from "./CoinItem";
 import { CoinContext } from "./CoinStore";
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux';
 
 
 export default function ApexChart(){

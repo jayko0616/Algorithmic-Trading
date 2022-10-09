@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {Provider} from "redux-redux";
-import {legacy_createStore as createStore} from "redux";
+import {Provider} from "react-redux";
+import {createStore} from "redux";
 import reducer from './CoinStore';
 
 const store = createStore(reducer);

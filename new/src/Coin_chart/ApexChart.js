@@ -83,7 +83,7 @@ export default function ApexChart(){
               type: 'candlestick',
             },
             title: {
-              text: 'React Chart',
+              text: coin_name_+" Chart",
               align: 'left'
             },
             // annotations: {

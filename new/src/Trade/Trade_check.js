@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import "./Trade_check.css";
-
+import styled, {css} from "styled-components";
 
 
 
@@ -12,6 +12,8 @@ function Trade_check(){
     const [sell_price, set_sell_price] = useState(0);
     const [quantity, set_quantity ] = useState(0);
     const [sum_price , set_sum_price] = useState(0);
+    const [isChecked, setIsChecked] = useState(false);
+
 
     const onChange_sell = (e) =>{
         set_sell_price(e.target.value);
@@ -31,10 +33,16 @@ function Trade_check(){
         // const sum = quantity * sell_price;
         // set_sum_price(sum);
     }
+
+    const onClick_check = () =>{
+        setIsChecked(!isChecked);
+    }
+
     const onClick_sum = () =>{
         const sum = quantity * sell_price;
         set_sum_price(sum);
     }
+
     const onChange_quantity = (e) =>{
         set_quantity(e.target.value);
         // set_quantity(quantity);
@@ -56,6 +64,13 @@ function Trade_check(){
                 <TableCell className="Table_selling">매도</TableCell>
                 <TableCell className="Table_bill">거래내역</TableCell>
                 <div>
+                    <div className="price_check">
+                        지정가
+                        <SCustomCheckboxWrapper>
+                            <SCustomCheckbox type="checkbox" isChecked={isChecked}/>
+                            <SCustomLabel onClick={onClick_check} isChecked={isChecked}/>
+                        </SCustomCheckboxWrapper>
+                    </div>
                     <div className="sell_price">
                         매수 가격(KRW)
                         <input onChange={onChange_sell} value={sell_price} className="input_sell"/>
@@ -75,5 +90,60 @@ function Trade_check(){
         </TableRow>
     )
 }
+
+const SCustomCheckboxWrapper = styled.div`
+    position: relative;
+`;
+
+
+const SCustomCheckbox = styled.input`
+    visibility: hidden;
+    ${({ isChecked }) =>
+        isChecked
+            ? css`
+                  background-color: #66bb6a;
+                  border-color: #66bb6a;
+                  &:after: {
+                      opacity: 1;
+                  }
+              `
+            : null}
+`;
+
+const SCustomLabel = styled.label`
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    ${({ isChecked }) => {
+        return isChecked
+            ? css`
+                  background-color: #66bb6a;
+                  border-color: #66bb6a;
+                  &:after {
+                      border: 2px solid #fff;
+                      border-top: none;
+                      border-right: none;
+                      content: "";
+                      height: 6px;
+                      left: 7px;
+                      position: absolute;
+                      top: 8px;
+                      transform: rotate(-45deg);
+                      width: 12px;
+                  }
+              `
+            : css`
+                  background-color: #fff !important;
+                  &:after {
+                      opacity: 1;
+                  }
+              `}}
+`;
 
 export default Trade_check

@@ -1,7 +1,6 @@
 import React from "react";
 import "./CoinList.css";
 import CoinItem from "./CoinItem";
-import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
 import  TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";

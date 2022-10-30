@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Footer from './Footer';
 import Header from './Header';
 import './Layout.css'
@@ -25,3 +25,4 @@ export default function Layout (){
 // }
 
 // export default Layout;
+

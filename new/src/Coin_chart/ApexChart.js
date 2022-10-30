@@ -1,23 +1,23 @@
-import React, {Component,createContext ,useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
 // import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
-import Layout from "../Layout/Layout";
-import CoinItem from "./CoinItem";
-import { CoinContext } from "./CoinStore";
+// import { CoinContext } from "./CoinStore";
 import {useSelector} from 'react-redux';
 
 
 export default function ApexChart(){
     const [coinInfo, setcoinInfo] = useState([]);
-    // const [name,setname] = useState(['BTC']);
-    // const coin_name_ = useContext(CoinContext);
+    const first_coin = '';
     const coin_name_ = useSelector((store)=>store.str);
     // console.log(coin_name_);
     // const [coin__, setcoin] =useState('BTC');
     // setname(props.coin_data);
 //Upbit API
+    const first_data = async(coin_name)=>{
+      
+    }
     const getApi = async(coin_name) =>{
       await axios.get('https://api.upbit.com/v1/candles/minutes/60?market=KRW-'+ coin_name +'&count=100').then((res) =>{
       for(let i = 0; i < res.data.length; i++){
@@ -85,6 +85,16 @@ export default function ApexChart(){
             title: {
               text: coin_name_+" Chart",
               align: 'left'
+            },
+            subtitle:{
+              text: close[99]+ " KRW",
+              align: 'left',
+              style: {
+                fontSize:  '20px',
+                fontWeight:  'bold',
+                fontFamily:  undefined,
+                color:  '#50bcdf'
+              },
             },
             // annotations: {
             //   xaxis: [

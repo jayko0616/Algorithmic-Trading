@@ -80,7 +80,7 @@ class CoinList extends React.Component{
                         <TableRow>
                             <TableCell>한글명</TableCell>
                             <TableCell>현재가</TableCell>
-                            <TableCell>전일대비</TableCell>
+                            <TableCell>태그</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

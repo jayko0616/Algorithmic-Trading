@@ -6,6 +6,8 @@ import axios from 'axios'
 // import { CoinContext } from "./CoinStore";
 import {useSelector} from 'react-redux';
 import { Button } from "react-bootstrap";
+import "./ApexChart.css";
+
 
 export default function ApexChart(){
     const [minute_, set_minute_] = useState(60);

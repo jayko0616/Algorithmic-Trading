@@ -1,6 +1,6 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { Button} from 'react-bootstrap';
+import {useEffect, useState } from "react";
+import {Button} from 'react-bootstrap';
 
 
 const Trade_buying = () =>{

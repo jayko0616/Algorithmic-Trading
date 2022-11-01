@@ -14,7 +14,7 @@ const Header = () => {
       <div>
         
         <div className='menu'>
-          <Button>주식</Button>
+          <Button className='btn_inputstock'>주식</Button>
           <Button className='btn_inputcoin'>코인</Button>
           <MenuItem>홈</MenuItem>
           <MenuItem>포트폴리오</MenuItem>

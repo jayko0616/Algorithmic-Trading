@@ -12,7 +12,7 @@ function Trade_check(){
     const [sell_price, set_sell_price] = useState(0);
     const [quantity, set_quantity ] = useState(0);
     const [sum_price , set_sum_price] = useState(0);
-    const [ checkValue, setCheckValue ] = useState('');
+    const [checkValue, setCheckValue ] = useState('');
     const [isBuying, setIsBuying] = useState(true);
 
     function checkOnlyOne(id) {

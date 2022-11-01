@@ -5,21 +5,19 @@ import dayjs from 'dayjs'
 import axios from 'axios'
 // import { CoinContext } from "./CoinStore";
 import {useSelector} from 'react-redux';
-
+import { Button } from "react-bootstrap";
 
 export default function ApexChart(){
+    const [minute_, set_minute_] = useState(60);
     const [coinInfo, setcoinInfo] = useState([]);
-    const first_coin = '';
     const coin_name_ = useSelector((store)=>store.str);
-    // console.log(coin_name_);
-    // const [coin__, setcoin] =useState('BTC');
-    // setname(props.coin_data);
+
+
 //Upbit API
-    const first_data = async(coin_name)=>{
-      
-    }
     const getApi = async(coin_name) =>{
-      await axios.get('https://api.upbit.com/v1/candles/minutes/60?market=KRW-'+ coin_name +'&count=100').then((res) =>{
+      // console.log('https://api.upbit.com/v1/candles/minutes/'+minute_+'?market=KRW-'+ coin_name +'&count=100');
+      // console.log(minute);
+      await axios.get('https://api.upbit.com/v1/candles/minutes/'+minute_+'?market=KRW-'+ coin_name +'&count=100').then((res) =>{
       for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
                   setcoinInfo(prev => {return [...prev, res.data[i]]})
@@ -31,12 +29,15 @@ export default function ApexChart(){
     }
 
     useEffect(() => {
-      // console.log(coin_name_);
+      console.log(minute_);
       getApi(coin_name_);
-      // getApi('BTC');
-      // setname(props.coin_data);
-      // console.log(coin_name_);
-    },[coin_name_])
+    },[coin_name_], minute_)
+
+    const change_minute = (time) =>{
+      console.log(time);
+      set_minute_(time);
+      console.log(minute_);
+    }
 
     const [time, setTime] = useState([]);
     const [open, setOpen] = useState([]);
@@ -135,6 +136,10 @@ export default function ApexChart(){
 
       return (
   <div id="chart">
+    <Button className="btn_oneminite" onClick={() => change_minute(1)} >1분</Button>
+    <Button className="btn_thirtyminite" onClick={() => change_minute(30)}>30분</Button>
+    <Button className="btn_onehour" onClick={() => change_minute(60)}>1시간</Button>
+    <Button className="btn_fourhour" onClick={() => change_minute(240)}>4시간</Button>   
     {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
 <ReactApexChart options={options} series={series} type="candlestick" height={400} width={600}/>
   </div>

@@ -159,7 +159,7 @@ export default function ApexChart(){
     <Button className="btn_fourhour" onClick={() => change_day()}>1일</Button> 
     </div> 
     {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
-<ReactApexChart options={options} series={series} type="candlestick" height={400} width={600}/>
+<ReactApexChart options={options} series={series} type="candlestick" height={400} width={500}/>
   </div>
       );
 }

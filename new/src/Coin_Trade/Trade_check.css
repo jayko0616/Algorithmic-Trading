@@ -33,17 +33,17 @@
 }
 
 .input_sell{
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 .input_quantity{
-    margin-left: 80px;
+    margin-left: 70px;
     margin-bottom: 10px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
 }
 
 .input_sum{
-    margin-left: 40px;
+    margin-left: 25px;
 }
 
 .check_left{

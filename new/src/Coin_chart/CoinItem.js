@@ -3,7 +3,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import {useDispatch} from "react-redux";
 import {change_coin} from './CoinStore';
-
+import { makeStyles } from "@material-ui/core/styles";
 
 // class CoinItem extends React.Component{
 
@@ -19,11 +19,20 @@ import {change_coin} from './CoinStore';
     //     // return(CoinChange(coin));
     // }
     // render(){
+        // const useStyles = makeStyles(theme => ({
+        //     cell_short: {
+        //         fontSize: "10px",
+        //         width: 100,
+        //         backgroundColor: 'green'
+          
+        //       },
+        //   }));
+        // const classes = useStyles();
         return(
             <TableRow className="Table_coin">
-                <TableCell onClick={()=>handleclick(props)}>{props.tag}</TableCell>
-                <TableCell onClick={()=>handleclick(props)}>{props.name_ko}</TableCell>
-                <TableCell onClick={()=>handleclick(props)}>{props.currency}</TableCell>
+                <TableCell onClick={()=>handleclick(props)} className="props_tag">{props.name_ko}</TableCell>
+                <TableCell onClick={()=>handleclick(props)} className="props_name_ko">{props.currency}</TableCell>
+                <TableCell onClick={()=>handleclick(props)} className="props_currency">{props.tag}</TableCell>
             </TableRow>
         )
     }

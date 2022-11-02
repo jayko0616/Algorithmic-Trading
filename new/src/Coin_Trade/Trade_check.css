@@ -51,14 +51,14 @@
 }
 
 .clear_btn{
-    width: 150px;
-    height: 50px;
-    margin-left: 20px;
+    width: 20%;
+    height: 7vh;
+    margin-left: 60px;
 }
 
 .sell_btn{
-    width: 150px;
-    height: 50px;
+    width: 20%;
+    height: 7vh;
     /* display: block; */
     margin-left: 20px;
     background-color: red;
@@ -66,11 +66,11 @@
 }
 
 .buying_btn{
-    width: 150px;
-    height: 50px;
+    width: 20%;
+    height: 7vh;
     /* display: block; */
     margin-left: 20px;
-    background-color: red;
+    background-color: blue;
     color: aliceblue;
 }
 

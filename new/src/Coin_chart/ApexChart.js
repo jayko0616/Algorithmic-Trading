@@ -15,7 +15,8 @@ export default function ApexChart(){
 
 
 //Upbit API
-    const getApi_day = async(coin_name) =>{
+    // 일별로 데이터 받을 때 
+    const getApi_day = async(coin_name) =>{ 
       await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
       for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
@@ -27,7 +28,7 @@ export default function ApexChart(){
       }) 
       // console.log(minute_);
     }
-
+    // 분당 데이터 받을 때 
     const getApi_minute = async(coin_name) =>{
       await axios.get('https://api.upbit.com/v1/candles/minutes/'+minute_+'/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
       for(let i = 0; i < res.data.length; i++){
@@ -44,11 +45,13 @@ export default function ApexChart(){
       time_ ? (getApi_day(coin_name_)) : (getApi_minute(coin_name_));
     },[coin_name_ , minute_, time_])
 
+    // 시간을 바꾸는 함수 
     const change_minute = (time) =>{
       set_minute_(time);
       set_time_(false);
     }
 
+    // 일을 바꾸는 함수 
     const change_day = () =>{  
       // set_minute_(time);
       set_time_(true);
@@ -156,7 +159,7 @@ export default function ApexChart(){
     <Button className="btn_thirtyminite" onClick={() => change_minute(30)}>30분</Button>
     <Button className="btn_onehour" onClick={() => change_minute(60)}>1시간</Button>
     <Button className="btn_fourhour" onClick={() => change_minute(240)}>4시간</Button>  
-    <Button className="btn_fourhour" onClick={() => change_day()}>1일</Button> 
+    <Button className="btn_oneday" onClick={() => change_day()}>1일</Button> 
     </div> 
     {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
 <ReactApexChart options={options} series={series} type="candlestick" height={400} width={500}/>

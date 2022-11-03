@@ -1,25 +1,23 @@
-import React, {Component,createContext ,useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import ReactApexChart from "react-apexcharts";
-// import coinList from './coinList.json'
 import dayjs from 'dayjs'
 import axios from 'axios'
-import Layout from "../Layout/Layout";
-import CoinItem from "./CoinItem";
-import { CoinContext } from "./CoinStore";
 import {useSelector} from 'react-redux';
+import { Button } from "react-bootstrap";
+import "./ApexChart.css";
 
 
 export default function ApexChart(){
+    const [minute_, set_minute_] = useState(60);
+    const [time_, set_time_] = useState(true);
     const [coinInfo, setcoinInfo] = useState([]);
-    // const [name,setname] = useState(['BTC']);
-    // const coin_name_ = useContext(CoinContext);
     const coin_name_ = useSelector((store)=>store.str);
-    // console.log(coin_name_);
-    // const [coin__, setcoin] =useState('BTC');
-    // setname(props.coin_data);
+
+
 //Upbit API
-    const getApi = async(coin_name) =>{
-      await axios.get('https://api.upbit.com/v1/candles/minutes/60?market=KRW-'+ coin_name +'&count=100').then((res) =>{
+    // 일별로 데이터 받을 때 
+    const getApi_day = async(coin_name) =>{ 
+      await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
       for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
                   setcoinInfo(prev => {return [...prev, res.data[i]]})
@@ -27,16 +25,37 @@ export default function ApexChart(){
               alert("error");
           }
       }
-      })
+      }) 
+      // console.log(minute_);
+    }
+    // 분당 데이터 받을 때 
+    const getApi_minute = async(coin_name) =>{
+      await axios.get('https://api.upbit.com/v1/candles/minutes/'+minute_+'/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
+      for(let i = 0; i < res.data.length; i++){
+          if(res.data[i].market != null){
+                  setcoinInfo(prev => {return [...prev, res.data[i]]})
+          }else{
+              alert("error");
+          }
+      }
+      }) 
+      // console.log(minute_);
+    }
+    useEffect(() => {
+      time_ ? (getApi_day(coin_name_)) : (getApi_minute(coin_name_));
+    },[coin_name_ , minute_, time_])
+
+    // 시간을 바꾸는 함수 
+    const change_minute = (time) =>{
+      set_minute_(time);
+      set_time_(false);
     }
 
-    useEffect(() => {
-      // console.log(coin_name_);
-      getApi(coin_name_);
-      // getApi('BTC');
-      // setname(props.coin_data);
-      // console.log(coin_name_);
-    },[coin_name_])
+    // 일을 바꾸는 함수 
+    const change_day = () =>{  
+      // set_minute_(time);
+      set_time_(true);
+    }
 
     const [time, setTime] = useState([]);
     const [open, setOpen] = useState([]);
@@ -86,6 +105,16 @@ export default function ApexChart(){
               text: coin_name_+" Chart",
               align: 'left'
             },
+            subtitle:{
+              text: close[99]+ " KRW",
+              align: 'left',
+              style: {
+                fontSize:  '20px',
+                fontWeight:  'bold',
+                fontFamily:  undefined,
+                color:  '#50bcdf'
+              },
+            },
             // annotations: {
             //   xaxis: [
             //     {
@@ -125,8 +154,15 @@ export default function ApexChart(){
 
       return (
   <div id="chart">
+    <div>
+    <Button className="btn_oneminite" onClick={() => change_minute(1)} >1분</Button>
+    <Button className="btn_thirtyminite" onClick={() => change_minute(30)}>30분</Button>
+    <Button className="btn_onehour" onClick={() => change_minute(60)}>1시간</Button>
+    <Button className="btn_fourhour" onClick={() => change_minute(240)}>4시간</Button>  
+    <Button className="btn_oneday" onClick={() => change_day()}>1일</Button> 
+    </div> 
     {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
-<ReactApexChart options={options} series={series} type="candlestick" height={400} width={600}/>
+<ReactApexChart options={options} series={series} type="candlestick" height={400} width={500}/>
   </div>
       );
 }

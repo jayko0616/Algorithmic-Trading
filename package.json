@@ -7,7 +7,11 @@
     "react-apexcharts": "^1.4.0",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",
+<<<<<<< HEAD
     "styled-components": "^5.3.6"
+=======
+    "style-components": "^0.1.0"
+>>>>>>> 8bf0e6663072ea1beab5947627d01f6a979cbcc3
   },
   "name": "coin_trading_project",
   "description": "project for UOS CS Festival",

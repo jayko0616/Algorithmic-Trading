@@ -1,12 +1,12 @@
 import React from "react";
 import "./CoinList.css";
 import CoinItem from "./CoinItem";
-import Paper from '@material-ui/core/Paper'
 import Table from '@material-ui/core/Table';
 import  TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
+import { makeStyles } from "@material-ui/core/styles";
 
 // const styles = theme => ({
 //     root: {
@@ -69,19 +69,26 @@ const coininfo = [
         },
 ];
 
-class CoinList extends React.Component{
-    render(){
-        // const { classes } = this.props;
 
+
+
+function CoinList (){
+    // render(){
+        // const { classes } = this.props;
+        const useStyles = makeStyles(theme => ({
+            tableCell:
+            { padding: "0px 12px 0px 0px"}
+            }));
+        const classes = useStyles();
         return(
-            <div>
+            <div className="list">
                 {/* <Table className = {classes.table}> */}
                 <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>한글명</TableCell>
                             <TableCell>현재가</TableCell>
-                            <TableCell>전일대비</TableCell>
+                            <TableCell>태그</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -89,11 +96,11 @@ class CoinList extends React.Component{
                         return(<CoinItem tag = {c.tag} name_ko = {c.name_ko} currency = {c.currency}/>)})}
                     </TableBody>
                 </Table>
-            {/* </Paper> */}
+
             </div>
         )
     }
-}
+// }
 
 // export default withStyles(styles)(CoinList);
 export default CoinList;

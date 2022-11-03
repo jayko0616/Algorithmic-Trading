@@ -6,7 +6,8 @@
     "next-redux-wrapper": "^8.0.0",
     "react-apexcharts": "^1.4.0",
     "react-redux": "^8.0.4",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "styled-components": "^5.3.6"
   },
   "name": "coin_trading_project",
   "description": "project for UOS CS Festival",

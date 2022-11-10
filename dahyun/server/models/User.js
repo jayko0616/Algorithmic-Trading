@@ -11,16 +11,15 @@ const userSchema = mongoose.Schema({
     _id: {
         type: String
     },
-    password: {
-        type: String,
-        minlength: 5
-    },
     email: {
         type: String,
         //공백 있을 시 없애주는 역할
         trim: true,
         //중복 금지
         unique: 1
+    },
+    password: {
+        type: String
     },
     address:{
         type: String
@@ -35,8 +34,7 @@ const userSchema = mongoose.Schema({
         type: String
     },
     role:{
-        type: Number,
-        default: 0
+        type: Number
     },
     token: {
         //유효성 관리할 떄 token이 필요함.
@@ -45,13 +43,19 @@ const userSchema = mongoose.Schema({
     tokenExp: {
         //todken의 유효기간
         type: Number
+    },
+    isAdmin: {
+        type: Number
+    },
+    isAuth: {
+        type: Number
     }
-
 })
 
 
 //index.js의 register router에서 정보들을 저장하기 전에 시행하는 함수
 //save 전에 실행하겠다는 것! 
+
 userSchema.pre('save', function( next ){
     //위의 내용들 가르킴
     var user = this;
@@ -60,17 +64,22 @@ userSchema.pre('save', function( next ){
     if (user.isModified('password')){
         //비밀번호를 암호화
         bcrypt.genSalt(saltRounds, function(err, salt){
-            if (err) return next(err)
-
+            if (err) {
+                console.log("slat실패!");
+                return next(err)
+            }
             bcrypt.hash( user.password, salt, function (err, hash){
-                if (err) return next(err)
-                user.password = hash;
+                if (err) {
+                    console.log("hash 실패!!!!!");
+                    return next(err)
+                }
+                user.password = hash; //plain password -> hash된 비밀번호로 바꿔줌 
                 next()
             })
         })
     }
     else{
-        next();
+        next()
     }
 })
 
@@ -95,7 +104,6 @@ userSchema.methods.generateToken = function(cb) {
     //jsonwebtoken을 이용해서 token을 생성하기
     var token = jwt.sign(user._id.toHexString(), 'secretToken')
     
-
     //token = user._id + 'secretToken'
     //secretToken으로 user._id를 찾는 방식임.
 
@@ -104,8 +112,6 @@ userSchema.methods.generateToken = function(cb) {
         if(err) return cb(err)
         cb(null, user)
     })
-
-
 }
 
 userSchema.statics.findByToken = function(token, cb) {

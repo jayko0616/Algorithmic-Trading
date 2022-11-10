@@ -21,25 +21,32 @@ mongoose.connect(config.mongoURI, {
 .catch(err => console.log(err))
 
 
-app.get('/', (req, res) =>  res.send('Hello World! Im dahyun!'))
 
-
+/**
+ * 회원가입 요청 
+ */
 app.post('/api/users/register', (req, res) => {
   
   //회원가입할 때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터베이스에 넣어준다. 
-
   const user = new User(req.body)
-
+  
   //받은 데이터가 user model에 저장됨
-  user.save((err, userInfo) => {
-    if(err) return res.json({ success: false, err})
-    return res.status(200).json({
-      success: true
-    })
-  })
+  user.save((err, doc) => {
+      if(err) {
+        console.log("user.save 실패!");
+        return res.json({ success: false, err})
+      }
+      return res.status(200).json({
+        success: true
+      })
+    }
+  )
 })
 
+/**
+ * 로그인 요청 
+ */
 app.post('/api/users/login', (req, res) => {
 
   //요청된 이메일을 데이터베이스에서 찾는다. 
@@ -73,7 +80,6 @@ app.post('/api/users/login', (req, res) => {
 })
 
 app.get('/api/users/auth', auth, (req, res) => {
-
   //여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 true라는 뜻.
   res.status(200).json({
     _id: req.user._id,
@@ -105,4 +111,4 @@ app.get('/api/users/coin/tarding', auth, (req, res) => {
   })
 })
 
-app.listen(port, () => console.log(`Example app listening on port ${port}`))
+app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

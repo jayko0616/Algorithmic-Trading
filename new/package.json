@@ -9,16 +9,17 @@
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "apexcharts": "^3.35.4",
+    "async_hooks": "^1.0.0",
     "audit": "^0.0.6",
     "axios": "^0.27.2",
-    "body-parser": "^1.20.0",
+    "body-parser": "^1.20.1",
     "bootstrap": "^5.2.0",
     "core-js": "^3.24.1",
     "cors": "^2.8.5",
     "cs": "^1.0.3",
     "d3-scale": "^4.0.2",
     "dayjs": "^1.11.4",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "jsonwebtoken": "^8.5.1",
     "lightweight-charts": "^3.8.0",
     "mysql": "^2.18.1",
@@ -36,11 +37,13 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-saga": "^1.2.1",
     "request": "^2.88.2",
+    "request-promise": "^4.2.6",
+    "require": "^2.4.20",
     "web-vitals": "^2.1.4",
     "xmlhttprequest": "^1.8.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "node node_modules/react-scripts/scripts/build.js",
     "test": "node node_modules/react-scripts/scripts/test.js",
     "eject": "node node_modules/react-scripts/scripts/eject.js"
@@ -65,6 +68,7 @@
   },
   "proxy": "http://localhost:5050/",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2"
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "http-proxy-middleware": "^2.0.6"
   }
 }

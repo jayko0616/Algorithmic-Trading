@@ -8,6 +8,8 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios'
+import { MarketCoin, MarketCoinList } from "../price_information/MarketInfo";
+// import { response } from "express";
 
 
 
@@ -76,33 +78,21 @@ const coininfo = [
 
 
 
+async function sortTicker(){
+    for(var i=0;i<9;i++){
+        coininfo[i].currency = MarketCoin(coininfo[i].tag);
+    }
+}
+
+
 function CoinList (){
-    // render(){
-        // const { classes } = this.props;
-        const [price, setprice] = useState(0);
+        const [price, setprice] = useState([]);
         var num = 0;
         useEffect(()=>{
-            // const getApi_day = async() =>{ 
-            //     for(let i=0;i<9;i++){
-            //         await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coininfo[i].tag +'&count=1').then((res) =>{
-            //             for(let j = 0; j < res.data.length; j++){
-            //                 if(res.data[j].market != null){
-            //                         setprice(prev => {return [...prev, res.data[j]]})
-            //                         console.log(num);
-            //                         coininfo[0].currency = price;
-            //                         num+=1;
-            //                 }else{
-            //                     alert("error");
-            //                 }
-            //             }
-            //             if(num === 10){
-            //                 num = 0;
-            //             }
-            //         }) 
-            //     }
-            // }
-            // getApi_day();
-        })
+            // MarketCoinList();
+            // MarketCoin('BTC');
+            sortTicker();
+        }, [])
         return(
             <div className="list">
                 {/* <Table className = {classes.table}> */}

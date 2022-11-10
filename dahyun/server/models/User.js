@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema({
     coinApiKey:{
         type: String
     },
-    stockApiKey:{
+    accessKey:{
         type: String
     },
     role:{

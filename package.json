@@ -6,12 +6,17 @@
     "next-redux-wrapper": "^8.0.0",
     "react-apexcharts": "^1.4.0",
     "react-redux": "^8.0.4",
+<<<<<<< HEAD
+    "react-script": "^2.0.5",
+    "redux": "^4.2.0"
+=======
     "redux": "^4.2.0",
 <<<<<<< HEAD
     "styled-components": "^5.3.6"
 =======
     "style-components": "^0.1.0"
 >>>>>>> 8bf0e6663072ea1beab5947627d01f6a979cbcc3
+>>>>>>> 76597d2793f02a11d6e9be85ae65aeeabd906b80
   },
   "name": "coin_trading_project",
   "description": "project for UOS CS Festival",

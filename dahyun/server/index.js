@@ -1,9 +1,8 @@
 const express = require('express') //express 모듈 가져옴
 const app = express()
-const port = 8080;
+const port = 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-
 const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
@@ -13,7 +12,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //application/json 얘는 이렇게 된 거 
 app.use(bodyParser.json());
-
 app.use(cookieParser());
 
 const mongoose = require('mongoose')
@@ -25,9 +23,6 @@ mongoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) =>  res.send('Hello World! Im dahyun!'))
 
-app.get('/api/hello', (req, res) => {
-  res.send("안녕하세요")
-})
 
 app.post('/api/users/register', (req, res) => {
   
@@ -35,7 +30,6 @@ app.post('/api/users/register', (req, res) => {
   //그것들을 데이터베이스에 넣어준다. 
 
   const user = new User(req.body)
-
 
   //받은 데이터가 user model에 저장됨
   user.save((err, userInfo) => {
@@ -57,16 +51,19 @@ app.post('/api/users/login', (req, res) => {
       })
     }
     //요청된 이메일이 데이터베이스에 있다면, 비밀번호가 맞는지 확인
-
     user.comparePassword(req.body.password, (err, isMatch) => {
-      if(!isMatch)
-        return res.json({ loginSuccess: false, message: "비밀번호가 틀렸습니다."})
+      if(!isMatch) {
+        return res.json({ 
+          loginSuccess: false, 
+          message: "비밀번호가 틀렸습니다."
+        })
+      }
 
       //비밀번호까지 맞다면, token을 생성하기 
       user.generateToken((err, user) => {
         if(err) return res.status(400).send(err);
 
-        //token을 저장한다. 어디에? 쿠키, 로컬스토리지, ... 여기선 쿠키
+        //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
         res.cookie("x_auth", user.token)
           .status(200)
           .json({ loginSuccess: true, userId: user._id})
@@ -80,11 +77,12 @@ app.get('/api/users/auth', auth, (req, res) => {
   //여기까지 미들웨어를 통과해 왔다는 얘기는 Authentication이 true라는 뜻.
   res.status(200).json({
     _id: req.user._id,
-    isAdmin: req.user.role === 0? false : true,
+    isAdmin: req.user.role === 0 ? false : true,
     isAuth: true,
-    email: req.user.email,
     name: req.user.name,
-    lastname: req.user.lastname
+    email: req.user.email,
+    coinApiKey: req.user.coinApiKey,
+    stockApiKey: req.user.stockApiKey
   })
 })
 

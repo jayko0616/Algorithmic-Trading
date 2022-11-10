@@ -4,5 +4,49 @@
     flex-direction: column;
     top: 0;
     width: 100%;
-    background-color: #61dafb;
+    /* background-color: #61dafb; */
+}
+
+
+.menu{
+    background-color: #093687;
+    height: 3.5rem;
+}
+
+.menu-item{
+    padding-left: 20px;
+    display: inline-block;
+    color: rgba(165,175,202,.6);
+    font-size: 15px;
+    font-size: bold;
+    font-weight: 400;
+    line-height: 3.5rem;
+    width: 10%;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* .menu-item:hover{
+    background-color: #cdfff3;
+} */
+
+.menu-item:active,
+.menu-item.active{
+    background-color: #9cd7ee;
+}
+
+
+.btn_inputcoin{
+    background-color: #ffffff;
+    border: 0;
+    outline: 0;
+    margin-right: 20px;
+}
+
+.btn_inputstock{
+    background-color: #ffffff;
+    border: 0;
+    outline: 0;
+    margin-right: 20px;
 }

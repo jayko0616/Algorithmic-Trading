@@ -1,41 +1,5 @@
 {
   "dependencies": {
-    "@reduxjs/toolkit": "^1.8.6",
-    "apexcharts": "^3.35.4",
-    "concurrently": "^7.4.0",
-    "next-redux-wrapper": "^8.0.0",
-    "react-apexcharts": "^1.4.0",
-    "react-redux": "^8.0.4",
-<<<<<<< HEAD
-    "react-script": "^2.0.5",
-    "redux": "^4.2.0"
-=======
-    "redux": "^4.2.0",
-<<<<<<< HEAD
-    "styled-components": "^5.3.6"
-=======
-    "style-components": "^0.1.0"
->>>>>>> 8bf0e6663072ea1beab5947627d01f6a979cbcc3
->>>>>>> 76597d2793f02a11d6e9be85ae65aeeabd906b80
-  },
-  "name": "coin_trading_project",
-  "description": "project for UOS CS Festival",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^11.0.2"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jayko0616/coin_trading_project.git"
-  },
-  "author": "naeun",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jayko0616/coin_trading_project/issues"
-  },
-  "homepage": "https://github.com/jayko0616/coin_trading_project#readme"
+    "@material-ui/core": "^4.12.4"
+  }
 }

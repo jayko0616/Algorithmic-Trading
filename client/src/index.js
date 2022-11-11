@@ -8,11 +8,10 @@ import {Provider} from "react-redux";
 import { applyMiddleware, createStore } from 'redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxThunk from 'redux-thunk';
-import Reducer from './_reducers';
 import { createRoot } from 'react-dom/client';
 import { configureStore } from '@reduxjs/toolkit'
 import promise from 'redux-promise';
-
+import Reducer from './_reducers';
 import  chart_reducer  from '../src/_reducers/chart_reducer'
 import user_reducer from './_reducers/user_reducer';
 
@@ -26,17 +25,17 @@ const store = createStoreWithMiddleware(Reducer,
   */
 
 const store = configureStore({
-  reducer: chart_reducer,
+  reducer: Reducer,
   middleware: [promiseMiddleware, ReduxThunk],
   //devTools: devTools
 })
 
-const store1 = createStore(Reducer);
+const store1 = createStore(chart_reducer);
 
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store = {store1} >
+    <Provider store = {store} serverState = {devTools}>
          <App />
     </Provider>
   </React.StrictMode>

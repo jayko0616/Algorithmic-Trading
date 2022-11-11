@@ -5,32 +5,36 @@ import axios from 'axios'
 import {useSelector} from 'react-redux';
 import { Button } from "react-bootstrap";
 import "./ApexChart.css";
+import chart_reducer from "../_reducers/chart_reducer";
+import Reducer from "../_reducers";
 
 
 export default function ApexChart(){
     const [minute_, set_minute_] = useState(60);
     const [time_, set_time_] = useState(true);
     const [coinInfo, setcoinInfo] = useState([]);
-    const coin_name_ = useSelector((store)=>store.str);
-
+    const coin_name_ = useSelector(Reducer => Reducer.chartState.str);
 
 //Upbit API
     // 일별로 데이터 받을 때 
     const getApi_day = async(coin_name) =>{ 
-      await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
-      for(let i = 0; i < res.data.length; i++){
+      await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100')
+      .then((res) =>{
+        console.log(res);
+        for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
-                  setcoinInfo(prev => {return [...prev, res.data[i]]})
+              setcoinInfo(prev => {return [...prev, res.data[i]]})
           }else{
               alert("error");
           }
-      }
+        }
       }) 
-      // console.log(minute_);
     }
+      // console.log(minute_);
     // 분당 데이터 받을 때 
     const getApi_minute = async(coin_name) =>{
-      await axios.get('https://api.upbit.com/v1/candles/minutes/'+minute_+'/?market=KRW-'+ coin_name +'&count=100').then((res) =>{
+      await axios.get('https://api.upbit.com/v1/candles/minutes/'+minute_+'/?market=KRW-'+ coin_name +'&count=100')
+      .then((res) =>{
       for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
                   setcoinInfo(prev => {return [...prev, res.data[i]]})
@@ -42,6 +46,7 @@ export default function ApexChart(){
       // console.log(minute_);
     }
     useEffect(() => {
+      console.log("coin::", coin_name_);
       time_ ? (getApi_day(coin_name_)) : (getApi_minute(coin_name_));
     },[coin_name_ , minute_, time_])
 

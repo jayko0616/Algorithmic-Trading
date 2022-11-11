@@ -5,7 +5,7 @@ const initState = {
     str:'BTC'
 }
 
-export const reducer = (state = initState, action)=>{
+export function reducer(state = initState, action) {
     switch(action.type){
         case 'XRP':
             return {str:action.str}

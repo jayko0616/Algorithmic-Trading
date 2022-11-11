@@ -1,5 +1,5 @@
 {
-  "name": "boiler-plate",
+  "name": "coin_trading_project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run backend\" \"cd ../client && npm run start\""
   },
-  "author": "jeong-dahyun",
+  "author": "Team Jayco",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.0.1",

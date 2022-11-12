@@ -8,13 +8,12 @@ function LandingPage() {
   
   //LandingPage() 들어오자마자 실행한다
   
-  
+  /*
   useEffect(() => {
     axios.get('http://localhost:5000/')
     .then(response => console.log(response.data))
-  }, [])
-  
-
+  }, []) 
+*/
   const [coinApiKey, setCoinApiKey] = useState("")
 
   const dispatch = useDispatch();

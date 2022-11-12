@@ -8,9 +8,6 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: 50
     },
-    _id: {
-        type: String
-    },
     email: {
         type: String,
         //공백 있을 시 없애주는 역할
@@ -59,6 +56,7 @@ const userSchema = mongoose.Schema({
 userSchema.pre('save', function( next ){
     //위의 내용들 가르킴
     var user = this;
+    console.log(user);
 
     //비밀번호를 바꿨을 시에만 암호화 재설정을 위해 if문을 사용한 것
     if (user.isModified('password')){

@@ -18,19 +18,12 @@ import user_reducer from './_reducers/user_reducer';
 //const createStoreWithMiddleware = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore)
 const devTools = window._REDUX_DEVTOOLS_EXTENSION_ &&
                 window._REDUX_DEVTOOLS_EXTENSION_();
-/*
-const store = createStoreWithMiddleware(Reducer, 
-  window._REDUX_DEVTOOLS_EXTENSION_ &&
-  window._REDUX_DEVTOOLS_EXTENSION_());
-  */
 
 const store = configureStore({
   reducer: Reducer,
   middleware: [promiseMiddleware, ReduxThunk],
   //devTools: devTools
 })
-
-const store1 = createStore(chart_reducer);
 
 const root = createRoot(document.getElementById('root'));
 root.render(

@@ -35,20 +35,9 @@ const store1 = createStore(chart_reducer);
 const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-<<<<<<< HEAD
-    {/* <Provider store={store}> */}
-    <Provider store={ createStoreWithMiddleware(Reducer,
-    window._REDUX_DEVTOOLS_EXTENSION_&&
-    window._REDUX_DEVTOOLS_EXTENSION_()) && store} >
-         <App />
-    {/* </Provider> */}
-    </Provider>
-   
-=======
     <Provider store = {store} serverState = {devTools}>
          <App />
     </Provider>
->>>>>>> 3d1fb47d976e5308bab22db940184b5be3c7173e
   </React.StrictMode>
 );
 

@@ -8,7 +8,7 @@ def cal_target(ticker):
     yesterday = df.iloc[-2]
     today = df.iloc[-1]
     yesterday_range = yesterday['high'] - yesterday['low']
-    target = today['open'] + yesterday_range * 0.5
+    target = today['open'] + yesterday_range * (-0.5)
     return target
 
 # 객체 생성
@@ -17,7 +17,8 @@ lines = f.readlines()
 access = lines[0].strip()
 secret = lines[1].strip()
 f.close()
-upbit = pybit.Ubit(access, secret)
+
+upbit = pyupbit.Upbit(access, secret)
 
 
 target = cal_target("KRW-BTC")
@@ -42,7 +43,7 @@ while True:
         time.sleep(10)
 
     # 9시에 목표가 갱신
-    if now.hour == 9 and now.minute == 0 and 20 <= now.second <= 30:
+    if now.hour == 9 and now.minute == 00 and 20 <= now.second <= 30:
         target = cal_target("KRW-BTC")
         time.sleep(10)
         op_mode = True
@@ -50,14 +51,14 @@ while True:
     price = pyupbit.get_current_price("KRW-BTC")
 
     # !!매수!!
-    if op_mode is True and hole is False and price >= target:
+    if op_mode is True and hold is False and price >= target:
         # 원화 정보 가져오기
         krw_balance = upbit.get_balance("KRW")
         # 시장가로 주문, krw_balance * 0.1이라고 하면 자신의 자산의 10프로만 가지고 거래
-        upbit.buy_market_order("KRW-BTC", krw_balance)
+        upbit.buy_market_order("KRW-BTC", krw_balance*0.5)
         hold = True
 
     
-    printf("현재시간: {now} 목표가: {target} 현재가: {price} 보유상태: {hold} 동작상태: {op_mode}")
+    print(f"현재시간: {now} 목표가: {target} 현재가: {price} 보유상태: {hold} 동작상태: {op_mode}")
     
     time.sleep(1)

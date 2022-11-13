@@ -4,9 +4,14 @@ import {
     TRADING_START
 } from '../_actions/types';
 
+const initState = {
+    loginSuccess: false,
+    register: false,
+    startSuccess: false,
+    message: ""
+}
 
-
-export default function(state = {}, action){
+export default function(state = initState, action){
     
     switch(action.type) {
         case LOGIN_USER:
@@ -16,7 +21,7 @@ export default function(state = {}, action){
             return {...state, register: action.payload }
             
         case TRADING_START:
-            return {...state, startSuccess: action.payload }
+            return {...state, startSuccess: action.payload , message: action.message}
             
         default:
             return state;

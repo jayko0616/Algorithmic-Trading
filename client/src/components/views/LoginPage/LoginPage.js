@@ -33,7 +33,7 @@ function LoginPage() {
     dispatch(loginUser(body))
       .then(response => {
         if(response.payload.loginSuccess) {
-          navigate('/register') // landing page 로 
+          navigate('/main') // landing page 로 
         }
         else {
           alert(response.payload.message)

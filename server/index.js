@@ -107,7 +107,7 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-app.get('/api/users/coin/tarding', auth, (req, res) => {
+app.post('/api/users/coin/tarding', auth, (req, res) => {
   User.comparePassword(req.body.coinApiKey, (err, isMatch) => {
     if(!isMatch)
       return res.json({ loginSuccess: false, message: "API KEY가 틀렸습니다."})

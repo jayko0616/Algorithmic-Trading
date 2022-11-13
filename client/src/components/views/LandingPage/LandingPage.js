@@ -42,9 +42,9 @@ function LandingPage() {
 
     dispatch(tradingStart(body).then((response) => {
       if (response.payload.startSuccess) {
-        navigate('/login');
+        navigate('/main');
       } else {
-        alert('Error');
+        alert('Error', response.payload.message);
       }
     }))
   }

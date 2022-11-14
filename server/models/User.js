@@ -127,9 +127,14 @@ userSchema.statics.findByToken = function(token, cb) {
 }
 
 userSchema.methods.compareCoinApiKey = function(plainApiKey, cb) {
+    var user = this;
+
     //plainPassword 1234567 & 암호화된 비밀번호
-    bcrypt.compare(plainApiKey, this.coinApiKey, function(err, isMatch){
-        if(err) return cb(err)
+    bcrypt.compare(plainApiKey, user.coinApiKey, function(err, isMatch){
+        if(err) {
+            console.log("api key가 틀림")
+            return cb(err)
+        }
         cb(null, isMatch)
     }) 
 }

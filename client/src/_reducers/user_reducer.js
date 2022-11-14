@@ -15,13 +15,13 @@ export default function(state = initState, action){
     
     switch(action.type) {
         case LOGIN_USER:
-            return {...state, loginSuccess: action.payload }
+            return {...state, loginSuccess: action.payload.loginSuccess, userId:action.payload.userId }
 
         case REGISTER_USER:
             return {...state, register: action.payload }
             
         case TRADING_START:
-            return {...state, startSuccess: action.payload , message: action.message}
+            return {...state, startSuccess: action.payload , message: action.payload.message}
             
         default:
             return state;

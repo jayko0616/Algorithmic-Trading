@@ -42,7 +42,7 @@ export function registerUser(dataToSubmit) {
  * @returns 
  */
 export function tradingStart(dataToSubmit) {
-    const request = axios.post('/api/users/coin/tarding', dataToSubmit)
+    const request = axios.post('/api/users/coin/trading', dataToSubmit)
       .then(response =>  response.data )
 
       return{

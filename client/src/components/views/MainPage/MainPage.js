@@ -19,6 +19,7 @@ function MainPage (){
               <Trade_check></Trade_check>
             </main>
           </body>
+          <br/><br/>
           <Footer/>
         </div>
   )

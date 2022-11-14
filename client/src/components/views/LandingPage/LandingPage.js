@@ -25,7 +25,9 @@ function LandingPage() {
     //event.preventDefault();
     navigate('/main');
   }
-
+  function port(){
+    navigate('/portfolid')
+}
   const onSubmitHandler = (event) => {
     event.preventDefault();
 

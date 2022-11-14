@@ -1,5 +1,10 @@
 .footer{
-    height: 80px;
+    display:flex;
+    height: 100px;
     margin-top: auto;
-    background-color: coral;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    text-align: center;
 }

@@ -5,12 +5,14 @@ import './MainPage.css'
 import ApexChart from '../../../Coin_chart/ApexChart';
 import CoinList from '../../../Coin_chart/CoinList';
 import Trade_check from '../../../Coin_Trade/Trade_check';
+import LandingHeader from '../LandingHeader/LandingHeader';
 
 
 function MainPage (){ 
 
     return (
         <div className='layout'>
+          <LandingHeader/>
           <Header/>
           <body>
             <main className='main'>

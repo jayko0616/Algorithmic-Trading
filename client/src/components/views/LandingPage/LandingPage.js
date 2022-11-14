@@ -3,6 +3,8 @@ import axios from 'axios';
 import {  useDispatch  } from 'react-redux'
 import {  tradingStart  } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
+import Footer from '../Footer/Footer';
+import LandingHeader from '../LandingHeader/LandingHeader';
 
 function LandingPage() {
   
@@ -60,32 +62,38 @@ function LandingPage() {
   }
   
   return (
-    <div style={{
+    <div>
+      <LandingHeader/>
+      <body>
+        <main style={{
       display: 'flex', justifyContent: 'center', alignItems: 'center',
-      width: '100%', height: '100vh'
+      width: '100%', height: '60vh'
     }}>
-      <form onSubmit={onMainHandler}>
-        <button type="submit" id="mainPage"  alt="메인페이지로 이동하기">
-          메인 페이지
-        </button>
-      </form>
-      <form onSubmit={onSubmitHandler}>
-        <button type="submit" id="tradingStartBtn"  alt="자동매매 시작하기">
-          자동매매 시작
-        </button>
-      </form>
-      <br></br>
-      <form onSubmit={onLoginHandler}>
-        <button type="submit" id="loginPage"  alt="로그인 페이지 이동">
-          로그인
-        </button>
-      </form>
-      <br></br>
-      <form onSubmit={onRegisterHandler}>
-        <button type="submit" id="registerPage"  alt="회원가입 페이지 이동">
-          회원가입
-        </button>
-      </form>
+        <form onSubmit={onMainHandler}>
+          <button type="submit" id="mainPage"  alt="메인페이지로 이동하기">
+            메인 페이지
+          </button>
+        </form>
+        <form onSubmit={onSubmitHandler}>
+          <button type="submit" id="tradingStartBtn"  alt="자동매매 시작하기">
+            자동매매 시작
+          </button>
+        </form>
+        <br></br>
+        <form onSubmit={onLoginHandler}>
+          <button type="submit" id="loginPage"  alt="로그인 페이지 이동">
+            로그인
+          </button>
+        </form>
+        <br></br>
+        <form onSubmit={onRegisterHandler}>
+          <button type="submit" id="registerPage"  alt="회원가입 페이지 이동">
+            회원가입
+          </button>
+        </form>
+        </main>
+      </body>
+      <Footer/>
     </div>
   )
 }

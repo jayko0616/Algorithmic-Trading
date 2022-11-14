@@ -56,7 +56,6 @@ const userSchema = mongoose.Schema({
 userSchema.pre('save', function( next ){
     //위의 내용들 가르킴
     var user = this;
-    console.log(user);
 
     //비밀번호를 바꿨을 시에만 암호화 재설정을 위해 if문을 사용한 것
     if (user.isModified('password')){
@@ -68,7 +67,7 @@ userSchema.pre('save', function( next ){
             }
             bcrypt.hash( user.password, salt, function (err, hash){
                 if (err) {
-                    console.log("hash 실패!!!!!");
+                    console.log("password hash 실패!!!!!");
                     return next(err)
                 }
                 user.password = hash; //plain password -> hash된 비밀번호로 바꿔줌 
@@ -127,12 +126,9 @@ userSchema.statics.findByToken = function(token, cb) {
 }
 
 userSchema.methods.compareCoinApiKey = function(plainApiKey, cb) {
-    var user = this;
-
     //plainPassword 1234567 & 암호화된 비밀번호
-    bcrypt.compare(plainApiKey, user.coinApiKey, function(err, isMatch){
+    bcrypt.compare(plainApiKey, this.coinApiKey, function(err, isMatch){
         if(err) {
-            console.log("api key가 틀림")
             return cb(err)
         }
         cb(null, isMatch)

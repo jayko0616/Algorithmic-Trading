@@ -7,7 +7,6 @@ const LandingHeader = () => {
         <div className='contents'>
           <h2 className='title'>
               JAYCO
-              <hr size="5px"></hr>
           </h2>
         </div>
       </header>

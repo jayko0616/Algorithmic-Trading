@@ -1,7 +1,9 @@
 import {
     LOGIN_USER,
     REGISTER_USER,
-    TRADING_START
+    TRADING_START,
+    LOGOUT_USER,
+    AUTH_USER
 } from '../_actions/types';
 
 const initState = {
@@ -17,7 +19,13 @@ export default function(state = initState, action){
         case LOGIN_USER:
             return {...state, loginSuccess: action.payload.loginSuccess, userId:action.payload.userId }
 
+        case LOGOUT_USER:
+            return {...state, success: action.payload }
+    
         case REGISTER_USER:
+            return {...state, register: action.payload }
+        
+        case AUTH_USER:
             return {...state, register: action.payload }
             
         case TRADING_START:

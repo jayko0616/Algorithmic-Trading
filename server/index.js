@@ -107,12 +107,13 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-app.post('/api/users/coin/trading', auth, (req, res) => {
-  User.comparePassword(req.body.coinApiKey, (err, isMatch) => {
+app.post('/api/users/coin/trading', (req, res) => {
+  User.compareCoinApiKey(req.body.coinApiKey, (err, isMatch) => {
     if(!isMatch)
       return res.json({ startSuccess: false, message: "API KEY가 틀렸습니다."})
     // 입력된 Coin Api Key가 맞으면 자동매매 실행 
-    return res.json({ startSuccess: true, message: "API KEY 인증 성공"})
+    res.status(200)
+       .json({ startSuccess: true, message: "API KEY 인증 성공"})
   })
 })
 

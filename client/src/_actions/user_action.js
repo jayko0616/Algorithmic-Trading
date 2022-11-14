@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
     LOGIN_USER,
     REGISTER_USER,
-    TRADING_START
+    TRADING_START,
+    LOGOUT_USER
 } from './types';
 
 /**
@@ -36,12 +37,25 @@ export function registerUser(dataToSubmit) {
   }
 }
 
+export function logout() {
+  const request = axios.get('/api/users/logout')
+    .then(response => response.data);
+  
+  //reducer에 넘김 
+  return {
+    type: LOGOUT_USER,
+    payload: request
+  }
+}
 /**
  * 코인 api key 입력받아 일치 확인 요청 함수 
  * @param {*} String apikey 
  * @returns 
  */
 export function tradingStart(dataToSubmit) {
+  console.log("coin/trading으로 요청 보냄")
+  console.log(dataToSubmit)
+  console.log(dataToSubmit.coinApiKey)
     const request = axios.post('/api/users/coin/trading', dataToSubmit)
       .then(response =>  response.data )
 

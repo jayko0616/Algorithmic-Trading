@@ -16,12 +16,10 @@ const Header = () => {
       <div>
         
         <div className='menu'>
-          <Button className='btn_inputstock'>주식</Button>
-          <Button className='btn_inputcoin'>코인</Button>
-          <MenuItem to={'/'}>홈</MenuItem>
+          <MenuItem to={'/main'}>홈</MenuItem>
           <MenuItem to={'/portfolio'}>포트폴리오</MenuItem>
-          <MenuItem>내정보</MenuItem>
-          <MenuItem>공지</MenuItem>
+          <MenuItem to= {'/myinformation'}>내정보</MenuItem>
+          <MenuItem to={'/notice'}>공지</MenuItem>
         </div>
       </div>
     </header>

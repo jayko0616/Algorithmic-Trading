@@ -8,6 +8,7 @@ import LandingPage from './components/views/LandingPage/LandingPage'
 import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
 import MainPage from './components/views/MainPage/MainPage'
+import PortfolioPage from './components/views/PortfolioPage/Portfolio'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/login" element={<LoginPage/>}></Route>
       <Route exact path="/register" element={<RegisterPage/>}></Route>
       <Route exact path="/main" element={<MainPage/>}></Route>
+      <Route exact path="/portfolio" element={<PortfolioPage/>}></Route>
     </Routes>
     </BrowserRouter>
     

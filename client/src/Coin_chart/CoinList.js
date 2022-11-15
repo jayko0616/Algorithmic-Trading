@@ -8,7 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios'
-
+import data from './coin_real_data.json';
 
 
 
@@ -80,29 +80,27 @@ function CoinList (){
     // render(){
         // const { classes } = this.props;
         const [price, setprice] = useState(0);
+        coininfo[0].currency = data.BTC.price;
+        coininfo[1].currency = data.ETH.price;
+        coininfo[2].currency = data.XRP.price;
+        coininfo[3].currency = data.ETC.price;
+        coininfo[4].currency = data.ADA.price;
+        coininfo[5].currency = data.SAND.price;
+        coininfo[6].currency = data.EOS.price;
+        coininfo[7].currency = data.SOL.price;
+        coininfo[8].currency = data.DOGE.price;
         var num = 0;
         useEffect(()=>{
-            // const getApi_day = async() =>{ 
-            //     for(let i=0;i<9;i++){
-            //         await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coininfo[i].tag +'&count=1').then((res) =>{
-            //             for(let j = 0; j < res.data.length; j++){
-            //                 if(res.data[j].market != null){
-            //                         setprice(prev => {return [...prev, res.data[j]]})
-            //                         console.log(num);
-            //                         coininfo[0].currency = price;
-            //                         num+=1;
-            //                 }else{
-            //                     alert("error");
-            //                 }
-            //             }
-            //             if(num === 10){
-            //                 num = 0;
-            //             }
-            //         }) 
-            //     }
-            // }
-            // getApi_day();
-        })
+            coininfo[0].currency = data.BTC.price;
+            coininfo[1].currency = data.ETH.price;
+            coininfo[2].currency = data.XRP.price;
+            coininfo[3].currency = data.ETC.price;
+            coininfo[4].currency = data.ADA.price;
+            coininfo[5].currency = data.SAND.price;
+            coininfo[6].currency = data.EOS.price;
+            coininfo[7].currency = data.SOL.price;
+            coininfo[8].currency = data.DOGE.price;
+        },data)
         return(
             <div className="list">
                 {/* <Table className = {classes.table}> */}

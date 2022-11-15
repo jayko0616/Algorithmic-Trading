@@ -4,9 +4,10 @@ import pyupbit
 
 
 def getBalance(access, secret):
+    print("dsf")
     upbit = pyupbit.Upbit(access,  secret)
-    balance = upbit.get_balance(ticker="KRW")
-    return balance
+    print("잔고: {}".format(upbit.get_balances()))
+    return 3
 
 if __name__ == '__main__':
     getBalance(sys.argv[1], sys.argv[2])

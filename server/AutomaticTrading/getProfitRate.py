@@ -5,7 +5,7 @@ import pyupbit
 
 def getProfitRate(upbitKey, ticker):
     balance = upbitKey.get_balance("KRW")
-    return balance
+    return balanceser
 
 if __name__ == '__main__':
     getProfitRate(sys.argv[1], sys.argv[2])

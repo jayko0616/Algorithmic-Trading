@@ -6,6 +6,10 @@ import LandingHeader from '../LandingHeader/LandingHeader';
 
 function PortfolioPage (){ 
 
+  const request = axios.post('/api/users/coin/balance', dataToSubmit)
+    .then(response => response.data);
+
+
     return (
       <div className='layout'>
         <LandingHeader/>

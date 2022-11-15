@@ -141,6 +141,13 @@ app.post('/api/users/coin/trading', (req, res) => {
   })
 })
 
-
+app.post('/api/users/coin/balance', (req, res) => {  
+  const spawn = require('child_process').spawn;
+  const result_02 = spawn('python', ['/AutomaticTrading/getBalance.py', '카레유', '20']);
+  
+  result_01.stdout.on('data', (result)=>{
+    console.log(result.toString());
+});
+})
 
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

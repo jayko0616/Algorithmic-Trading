@@ -12,7 +12,7 @@
   "author": "Team Jayco",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.0",
     "child_process": "^1.0.2",
     "concurrently": "^7.5.0",

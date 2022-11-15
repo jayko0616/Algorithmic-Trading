@@ -7,8 +7,8 @@ const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
 const spawn = require('child_process').spawn;
-var access = null;
-var secret = null;
+var access;
+var secret;
 //application/x-www-form-urlencoded 이렇게 된 데이터를 분석해서 가져올 수 있게 함
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -142,9 +142,10 @@ app.post('/api/users/coin/trading', (req, res) => {
 })
 
 app.post('/api/users/coin/balance', (req, res) => {  
+  console.log("merong")
   const spawn = require('child_process').spawn;
-  const result_02 = spawn('python', ['/AutomaticTrading/getBalance.py', '카레유', '20']);
-  
+  const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
+
   result_01.stdout.on('data', (result)=>{
     console.log(result.toString());
 });

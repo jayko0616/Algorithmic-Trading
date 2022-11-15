@@ -1,7 +1,7 @@
 import { Axios } from 'axios';
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loginUser, setApi } from '../../../_actions/user_action';
+import { loginUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
@@ -46,7 +46,6 @@ function LoginPage() {
     dispatch(loginUser(body))
       .then(response => {
         if(response.payload.loginSuccess) {
-          dispatch(setApi(body))
           navigate('/main') // landing page 로 
         }
         else {

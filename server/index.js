@@ -90,6 +90,19 @@ app.post('/api/users/login', (req, res) => {
           user.generateToken((err, user) => {
             if(err) return res.status(400).send(err);
 
+            //accesskey and secretkey 설정 ! 
+            const spawn = require('child_process').spawn;
+            const result = spawn('python', ['./AutomaticTrading/setApiKey.py', req.body.accessKey, req.body.coinApiKey]);
+            result.stdout.on('data', function(data) {
+              console.log(data.toString());
+              var upbitKey = data;
+              console.log(upbitKey);
+              console.log("되는거냐!!")
+            })
+            result.stderr.on('data', function(data) {
+              console.log(data.toSting());
+            })
+
             //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
             res.cookie("x_auth", user.token)
               .status(200)
@@ -138,7 +151,7 @@ app.post('/api/users/coin/trading', (req, res) => {
 app.get('/api/users/coin/set', (req, res) => {
   const secret = req.body.coinApiKey;
   const access = req.body.accessKey;
-  
+
 })
 
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

@@ -3,7 +3,8 @@ import {
     LOGIN_USER,
     REGISTER_USER,
     TRADING_START,
-    LOGOUT_USER
+    LOGOUT_USER,
+    ApiKey_Set
 } from './types';
 
 /**

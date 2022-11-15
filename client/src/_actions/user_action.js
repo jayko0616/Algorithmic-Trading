@@ -65,9 +65,13 @@ export function tradingStart(dataToSubmit) {
       }
 }
 
-
-export function setApi(secretkey, accesskey) {
-  const request = axios.get('/api/users/coin/set', secretkey, accesskey)
+/**
+ * 로그인할 때 받은 api key를 파이썬에 넘기는 요청 함수 
+ * @param {*} body - secretkey, accesskey 
+ * @returns ApiKey_Set; true or false
+ */
+export function setApi(dataToSubmit) {
+  const request = axios.get('/api/users/coin/set', dataToSubmit)
     .then(response => response.data);
 
   return { 

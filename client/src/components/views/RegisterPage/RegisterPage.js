@@ -91,7 +91,7 @@ function RegisterPage() {
           navigate('/') // landing page 로 
         }
         else {
-          alert("회원가입 실패!")
+          alert("회원가입 실패!", response.payload.err)
         }
       })
   }

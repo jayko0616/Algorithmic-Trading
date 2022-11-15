@@ -25,23 +25,27 @@ mongoose.connect(config.mongoURI, {
 /**
  * 회원가입 요청 
  */
+
 app.post('/api/users/register', (req, res) => {
   
   //회원가입할 때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터베이스에 넣어준다. 
+  User.init()
+
   const user = new User(req.body)
   
   //받은 데이터가 user model에 저장됨
   user.save((err, doc) => {
       if(err) {
         console.log("user.save 실패!");
+        console.log(err);
         return res.json({ success: false, err})
       }
+      console.log("user.save!");
       return res.status(200).json({
         success: true
       })
-    }
-  )
+  })
 })
 
 /**
@@ -103,11 +107,13 @@ app.get('/api/users/logout', auth, (req, res) => {
     })
 })
 
-app.get('/api/users/coin/tarding', auth, (req, res) => {
-  User.comparePassword(req.body.coinApiKey, (err, isMatch) => {
+app.post('/api/users/coin/trading', (req, res) => {
+  User.compareCoinApiKey(req.body.coinApiKey, (err, isMatch) => {
     if(!isMatch)
-      return res.json({ loginSuccess: false, message: "API KEY가 틀렸습니다."})
+      return res.json({ startSuccess: false, message: "API KEY가 틀렸습니다."})
     // 입력된 Coin Api Key가 맞으면 자동매매 실행 
+    res.status(200)
+       .json({ startSuccess: true, message: "API KEY 인증 성공"})
   })
 })
 

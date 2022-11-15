@@ -8,9 +8,6 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: 50
     },
-    _id: {
-        type: String
-    },
     email: {
         type: String,
         //공백 있을 시 없애주는 역할
@@ -70,7 +67,7 @@ userSchema.pre('save', function( next ){
             }
             bcrypt.hash( user.password, salt, function (err, hash){
                 if (err) {
-                    console.log("hash 실패!!!!!");
+                    console.log("password hash 실패!!!!!");
                     return next(err)
                 }
                 user.password = hash; //plain password -> hash된 비밀번호로 바꿔줌 
@@ -131,7 +128,9 @@ userSchema.statics.findByToken = function(token, cb) {
 userSchema.methods.compareCoinApiKey = function(plainApiKey, cb) {
     //plainPassword 1234567 & 암호화된 비밀번호
     bcrypt.compare(plainApiKey, this.coinApiKey, function(err, isMatch){
-        if(err) return cb(err)
+        if(err) {
+            return cb(err)
+        }
         cb(null, isMatch)
     }) 
 }

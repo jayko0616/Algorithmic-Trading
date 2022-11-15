@@ -1,7 +1,7 @@
 import React from "react";
 import {useEffect, useState } from "react";
 import { Button} from 'react-bootstrap';
-
+import selling_Datasend from "./selling_Datasend";
 
 const Trade_selling = () =>{
     const [sell_price, set_sell_price] = useState(0);
@@ -87,7 +87,7 @@ const Trade_selling = () =>{
         </div>
         <div className="clearsell_btn">
         <Button className="clear_btn" onClick={clear_fun}>초기화</Button>   
-        <Button className="sell_btn">매도</Button>
+        <Button className="sell_btn" onClick={selling_Datasend}>매도</Button>
         </div>
     </div>
     )

@@ -3,7 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const fs = require('fs')
 const app = express();
-const port = 8080;
+const port = 5000;
 
 
 let recvData = "";
@@ -67,8 +67,8 @@ function tradeServerConnect(codes) {
     var i = 0;
     let ws = new WebSocket('wss://api.upbit.com/websocket/v1');
     ws.on('open', ()=>{
-        console.log('trade websocket is connected')
-        console.log(codes);
+        // console.log('trade websocket is connected')
+        // console.log(codes);
         const str = `[{"ticket":"find"},{"type":"trade","codes":["${codes}"]}]`;
         ws.send(str);
     })  
@@ -151,18 +151,11 @@ async function start() {
     var i = 0; 
     function print()
     {
-        // coin_const = 'KRW-'+coininfo[i].tag;
 	    tradeServerConnect('KRW-'+coininfo[i].tag)
-        // console.log(coininfo[i].tag);
-        // console.log(i)
         i+=1;
         if(i == 9){
-            // console.log(i)
             i = i - 9;
         }
-        // tradeServerConnect('KRW-BTC')
-        // console.log('recvData',recvData['trade_price']);
-        // console.log(coin_real_data[2])
         if(coin_real_data[8] != null){
             const Coin_data = {
                 BTC:{price: coin_real_data[0]},
@@ -185,8 +178,32 @@ async function start() {
     setInterval(print,1000);
 }
 
-start()
+async function local(){
+          // 포트넘버 설정
+    app.post('/api', (req, res)=>{
+        let name = req.body.name;
+        console.log(name);
+        console.log('탐정이죠 ');
+        const spawn = require('child_process').spawn;
+    
+    // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
+          const result = spawn('python', ['pri.py']);
+    
+    // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
+          result.stdout.on('data', function(data) {
+              console.log(data.toString());
+          });
+    
+      // 4. 에러 발생 시, stderr의 'data'이벤트리스너로 실행결과를 받는다.
+          result.stderr.on('data', function(data) {
+              console.log(data.toString());
+          });
+      });
+    console.log('이게 일단 되나?')
+}
 
+start()
+// local()
 // console.log(i);
 // tradeServerConnect();
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

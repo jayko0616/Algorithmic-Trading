@@ -1,6 +1,7 @@
 import React from "react";
 import {useEffect, useState } from "react";
 import {Button} from 'react-bootstrap';
+import buying_Datasend from "../Coin_chart/buying_Datasend";
 
 
 const Trade_buying = () =>{
@@ -84,7 +85,7 @@ const Trade_buying = () =>{
             </div>
             <div className="clearbuying_btn">
                 <Button className="clear_btn" onClick={clear_fun}>초기화</Button>   
-                <Button className="buying_btn" >매수</Button>
+                <Button className="buying_btn" onClick={()=>buying_Datasend()} >매수</Button>
             </div>
     </div>  
     )

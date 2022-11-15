@@ -20,7 +20,7 @@ export default function ApexChart(){
     const getApi_day = async(coin_name) =>{ 
       await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100')
       .then((res) =>{
-        console.log(res);
+        // console.log(res);
         for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
               setcoinInfo(prev => {return [...prev, res.data[i]]})
@@ -46,7 +46,7 @@ export default function ApexChart(){
       // console.log(minute_);
     }
     useEffect(() => {
-      console.log("coin::", coin_name_);
+      // console.log("coin::", coin_name_);
       time_ ? (getApi_day(coin_name_)) : (getApi_minute(coin_name_));
     },[coin_name_ , minute_, time_])
 

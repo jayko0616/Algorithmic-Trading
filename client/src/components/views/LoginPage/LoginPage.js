@@ -46,7 +46,7 @@ function LoginPage() {
     dispatch(loginUser(body))
       .then(response => {
         if(response.payload.loginSuccess) {
-          dispatch(setApi(body.coinApiKey, body.accessKey))
+          dispatch(setApi(body))
           navigate('/main') // landing page 로 
         }
         else {

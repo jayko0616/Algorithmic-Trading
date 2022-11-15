@@ -135,4 +135,10 @@ app.post('/api/users/coin/trading', (req, res) => {
   })
 })
 
+app.get('/api/users/coin/set', (req, res) => {
+  const secret = req.body.coinApiKey;
+  const access = req.body.accessKey;
+  
+})
+
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

@@ -4,8 +4,10 @@ import pyupbit
 
 
 def getBalance(access, secret):
-    upbit = pyupbit.Upbit(access, secret)
-    print("이제는 되라!" , upbit.get_balance("KRW"))
+    print(access)
+    print(secret)
+    upbit = pyupbit.Upbit(str(access),  str(secret))
+    print("원: {}".format(upbit.get_balance(ticker="KRW")))
     return 3
 
 if __name__ == '__main__':

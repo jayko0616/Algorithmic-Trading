@@ -95,6 +95,7 @@ app.post('/api/users/login', (req, res) => {
             //accesskey and secretkey 설정 ! 
             access = req.body.accessKey;
             secret = req.body.coinApiKey;
+            console.log(access);
 
             //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
             res.cookie("x_auth", user.token)
@@ -132,7 +133,8 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 app.post('/api/users/coin/trading', (req, res) => {
-  const result = spawn('python', ['./AutomaticTrading/getBalance.py', 'sCdRT8xO9jw1bYo2UxpB0rcIQYGQRc5ccXs2Ix6V', 'OPyX7tWuowsOk6kmxdOT9aT8xy8QazBdYsux3wEJ']);
+  console.log("access: ", access)
+  const result = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
   result.stdout.on('data', function(data) {
     console.log(data.toString());
   })

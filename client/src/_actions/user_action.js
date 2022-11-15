@@ -64,3 +64,14 @@ export function tradingStart(dataToSubmit) {
         payload: request
       }
 }
+
+
+export function setApi(secretkey, accesskey) {
+  const request = axios.get('/api/users/coin/set', secretkey, accesskey)
+    .then(response => response.data);
+
+  return { 
+    type: ApiKey_Set,
+    payload: request
+  }
+}

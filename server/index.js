@@ -70,14 +70,32 @@ app.post('/api/users/login', (req, res) => {
         })
       }
 
-      //비밀번호까지 맞다면, token을 생성하기 
-      user.generateToken((err, user) => {
-        if(err) return res.status(400).send(err);
+      user.compareCoinApiKey(req.body.coinApiKey, (err, isMatch) => {
+        if(!isMatch) {
+          return res.json({ 
+            loginSuccess: false, 
+            message: "Api Key가 틀렸습니다."
+          })
+        }
 
-        //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
-        res.cookie("x_auth", user.token)
-          .status(200)
-          .json({ loginSuccess: true, userId: user._id})
+        user.compareAccessApiKey(req.body.accessKey, (err, isMatch) => {
+          if(!isMatch) {
+            return res.json({ 
+              loginSuccess: false, 
+              message: "Access Key가 틀렸습니다."
+            })
+          }
+
+          //비밀번호까지 맞다면, token을 생성하기 
+          user.generateToken((err, user) => {
+            if(err) return res.status(400).send(err);
+
+            //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
+            res.cookie("x_auth", user.token)
+              .status(200)
+              .json({ loginSuccess: true, userId: user._id})
+          })
+        })
       })
     })
   })

@@ -61,17 +61,24 @@ userSchema.pre('save', function( next ){
     if (user.isModified('password')){
         //비밀번호를 암호화
         bcrypt.genSalt(saltRounds, function(err, salt){
-            if (err) {
-                console.log("slat실패!");
-                return next(err)
-            }
-            bcrypt.hash( user.password, salt, function (err, hash){
-                if (err) {
-                    console.log("password hash 실패!!!!!");
-                    return next(err)
-                }
-                user.password = hash; //plain password -> hash된 비밀번호로 바꿔줌 
-                next()
+            if (err) { return next(err) }
+
+            bcrypt.hash( user.password, salt, function (err, passhash){
+                if (err) { return next(err) }
+                user.password = passhash; //plain password -> hash된 비밀번호로 바꿔줌 
+                
+                //apikey 암호화
+                bcrypt.hash( user.coinApiKey, salt, function (err, apihash){
+                    if (err) { return next(err) }
+                    user.coinApiKey = apihash;
+
+                    //access key 암호화 
+                    bcrypt.hash( user.accessKey, salt, function(err, accesshash) {
+                        if(err) { return next(err) }
+                        user.accessKey = accesshash;
+                        next();
+                    })
+                })                    
             })
         })
     }
@@ -135,6 +142,15 @@ userSchema.methods.compareCoinApiKey = function(plainApiKey, cb) {
     }) 
 }
 
+userSchema.methods.compareAccessApiKey = function(plainAccessKey, cb) {
+    //plainPassword 1234567 & 암호화된 비밀번호
+    bcrypt.compare(plainAccessKey, this.accessKey, function(err, isMatch){
+        if(err) {
+            return cb(err)
+        }
+        cb(null, isMatch)
+    }) 
+}
 
 const User = mongoose.model('User',userSchema)
 

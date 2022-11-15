@@ -132,7 +132,8 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 app.post('/api/users/coin/trading', (req, res) => {
-  const result = spawn('python', ['./AutomaticTrading/getBalance.py', 'sCdRT8xO9jw1bYo2UxpB0rcIQYGQRc5ccXs2Ix6V', 'OPyX7tWuowsOk6kmxdOT9aT8xy8QazBdYsux3wEJ']);
+  
+  const result = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
   result.stdout.on('data', function(data) {
     console.log(data.toString());
   })

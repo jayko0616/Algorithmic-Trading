@@ -145,11 +145,11 @@ app.post('/api/users/coin/trading', (req, res) => {
 
 app.post('/api/users/coin/balance', (req, res) => {  
   console.log("merong")
-  const spawn = require('child_process').spawn;
+
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
-  result_01.stdout.on('data', (result)=>{
-    console.log(result.toString());
+  result_01.stdout.on('data', function(data) {
+    console.log(data.toString());
 });
 })
 

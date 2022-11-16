@@ -71,7 +71,7 @@ function LandingPage() {
       <body>
         <main style={{
       display: 'flex', justifyContent: 'center', alignItems: 'center',
-      width: '100%', height: '60vh'
+      width: '100%', height: '60vh', background:'#DBE0D5', marginTop: '0px'
     }}>
         <form onSubmit={onMainHandler}>
           <button type="submit" id="mainPage"  alt="메인페이지로 이동하기">

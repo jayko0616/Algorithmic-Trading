@@ -74,7 +74,7 @@ export function getBalance(dataToSubmit) {
   console.log(request);
 
   return {
-    type: GET_BALANCE,
+    type: GET_BALANCE, 
     payload: request
   }
 }

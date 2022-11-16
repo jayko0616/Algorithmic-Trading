@@ -4,22 +4,23 @@
     flex-direction: column;
     top: 0;
     width: 100%;
+    text-align: center;
     /* background-color: #61dafb; */
 }
 
 
 .menu{
-    background-color: #093687;
+    background-color: #DBE0D5;
     height: 3.5rem;
 }
 
 .menu-item{
     padding-left: 20px;
     display: inline-block;
-    color: rgba(165,175,202,.6);
+    color: #2C2D2A;
     font-size: 15px;
     font-size: bold;
-    font-weight: 400;
+    font-weight: 650;
     line-height: 3.5rem;
     width: 10%;
     text-align: center;

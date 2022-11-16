@@ -9,6 +9,8 @@ const LandingHeader = () => {
               JAYCO
           </h2>
         </div>
+        <hr className='hr1'></hr>
+        <hr className='hr2'></hr>
       </header>
   
     )

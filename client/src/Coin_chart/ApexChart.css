@@ -1,30 +1,41 @@
 .btn_oneminite{
-    background-color: #ffffff;
+    background-color: #2C2D2A;
+    color: #DBE0D5;
     border: 0;
     outline: 0;
 }
 
 .btn_thirtyminite{
-    background-color: #ffffff;
+    background-color: #2C2D2A;
+    color: #DBE0D5;
     border: 0;
     outline: 0;
 }
 
 .btn_onehour{
-    background-color: #ffffff;
+    background-color: #2C2D2A;
+    color: #DBE0D5;
     border: 0;
     outline: 0;
 }
 
 .btn_fourhour{
-    background-color: #ffffff;
+    background-color: #2C2D2A;
+    color: #DBE0D5;
     border: 0;
     outline: 0;
 }
 
 .btn_oneday{
     /* background-color: #2962FF; */
-    background-color: #FFFFFF;
+    background-color: #2C2D2A;
+    color: #DBE0D5;
     border: 0;
     outline: 0;
+}
+
+.times{
+    text-align: center;
+    margin-top:10px;
+    margin-bottom: 10px;
 }

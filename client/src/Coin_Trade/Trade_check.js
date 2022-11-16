@@ -9,8 +9,6 @@ import Trade_selling from "./Trade_selling";
 import Trade_info from "./Trade_info";
 import Coin_mp from "../Coin_chart/Coin_mp";
 
-
-
 function Trade_check(){
     const [sell_price, set_sell_price] = useState(0);
     const [quantity, set_quantity ] = useState(0);

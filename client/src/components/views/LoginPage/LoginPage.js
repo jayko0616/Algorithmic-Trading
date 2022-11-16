@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
+import LandingHeader from '../LandingHeader/LandingHeader';
+import Footer from '../Footer/Footer';
+import './LoginPage.css';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -55,26 +58,53 @@ function LoginPage() {
   }
 
   return (
+    <div>
+    <LandingHeader/>
     <div style={{
       display: 'flex', justifyContent: 'center', alignItems: 'center',
-      width: '100%', height: '100vh'
+      width: '100%', height: '60vh', background: '#DBE0D5'
     }}>
         <form style={{ display: 'flex', flexDirection: 'column'}}
           onSubmit={onSubmitHandler}
         >
-          <label>Email</label>
-          <input type="email" value={Email} onChange={onEmailHandler}></input>
-          <label>Password</label>
-          <input type="password" value={Password} onChange={onPasswordHandler}></input>
-          <label>SecretKey</label>
-          <input type="password" value={ApiKey} onChange={onApiKeyHandler}></input>
-          <label>AccessKey</label>
-          <input type="password" value={AccessKey} onChange={onAccessKeyHandler}></input>
-          <br />
-          <button>
-            Login
-          </button>
+          <div className='login'>
+            <input id="1" type="email" value={Email} onChange={onEmailHandler} required></input>
+            <label>Email</label>
+            <span></span>
+          </div>
+          <br></br><br></br>
+          
+          <div className='login'>
+            <input id="2" type="password" value={Password} onChange={onPasswordHandler} required></input>
+            <label>Password</label>
+            <span></span>
+          </div>
+          <br></br><br></br>
+          
+          <div className='login'>
+            <input id="3" type="password" value={ApiKey} 
+            onChange={onApiKeyHandler} required></input>
+            <label>SecretKey</label>
+            <span></span>
+          </div>
+          <br></br><br></br>
+          
+          <div className='login'>
+            <input id="4" type="password" value={AccessKey} 
+            onChange={onAccessKeyHandler} required></input>
+            <label>AccessKey</label>
+            <span></span>
+          </div>
+          <br /><br></br>
+          
+          <div className='login'>
+            <button>
+              Login
+            </button>
+          </div>
         </form>
+    </div>
+    <Footer/>
     </div>
   )
 }

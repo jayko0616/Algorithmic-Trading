@@ -21,6 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.5.3"
   },
+  "proxy": "http://localhost:5000",
+  "secure": false,
   "devDependencies": {
     "nodemon": "^2.0.19"
   }

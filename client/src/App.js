@@ -12,6 +12,7 @@ import PortfolioPage from './components/views/PortfolioPage/PortfolioPage'
 import MyinformationPage from './components/views/MyinformationPage/MyinformationPage'
 import NoticePage from './components/views/NoticePage/NoticePage'
 
+
 function App() {
   return (
     <BrowserRouter>

@@ -86,37 +86,9 @@ function tradeServerConnect(codes) {
             let str = data.toString('utf-8')
             recvData = JSON.parse(str)
             app.get("/", (req, res) => res.send("Hello World!"));
-            // console.log("/"+codes);
-            // setTimeout(() => {
-            // console.log('상수:'+coin_const)
-            // if(codes == coin_const){
-                // console.log('tag: '+codes)
-                // console.log('data: '+recvData['code'])
-                // console.log(recvData['code'] + ':' + recvData['trade_price'])
-                // app.get("/"+codes, (req, res) => {
-                //     // res.send('BTC');
-                //     // console.log("/"+codes);
-                //         console.log(recvData['code'] + ':' + recvData['trade_price'])
-                //         return res.send(recvData);
-                // });
                 if(codes == 'KRW-BTC'){
                     coin_real_data[0] = recvData['trade_price']
-                    // const coin_BTC = {
-                    //     tag : recvData['code'],
-                    //     price: recvData['trade_price']
-                    // }
-                    // const BTC_JSON = JSON.stringify(coin_BTC);
-                    // fs.writeFileSync("coin_real_data.json", BTC_JSON);
                 }
-                // else if(codes == 'KRW-ETH'){
-                //     coin_real_data[1] = recvData['trade_price']
-                //         const coin_ETH = {
-                //             tag : recvData['code'],
-                //             price: recvData['trade_price']
-                //         }
-                //         const ETH_JSON = JSON.stringify(coin_ETH);
-                //         fs.writeFileSync("coin_real_data.json", ETH_JSON);
-                // }
                 else if(codes == 'KRW-ETH'){
                     coin_real_data[1] = recvData['trade_price']
                 }
@@ -141,8 +113,6 @@ function tradeServerConnect(codes) {
                 else if(codes == 'KRW-DOGE'){
                     coin_real_data[8] = recvData['trade_price']
                 }
-            // }
-            // }, 5000);
         } catch (e) {
             console.log(e)
         }
@@ -185,7 +155,6 @@ async function local(){
     app.post('/api/users/coin/buy', (req, res)=>{
         let name = req.body;
         console.log(name);
-        // console.log('탐정이죠 ');
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
@@ -224,7 +193,7 @@ async function local(){
 }
 
 start()
-local()
+// local()
 // console.log(i);
 // tradeServerConnect();
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

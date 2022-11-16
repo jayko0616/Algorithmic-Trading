@@ -7,6 +7,6 @@ secret = lines[1].strip()
 f.close()
 
 upbit = pyupbit.Upbit(access, secret)
-balance = upbit.get_balance("KRW")
-print(balance)
+amount = upbit.get_amount("BTC")
+print(amount)
     

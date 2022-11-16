@@ -71,8 +71,6 @@ export function getBalance(dataToSubmit) {
   const request = axios.post('/api/users/coin/balance')
   .then(response => response.data);
 
-  console.log(request);
-
   return {
     type: GET_BALANCE, 
     payload: request

@@ -9,10 +9,16 @@ import pyupbit
 # ###
 
 def getBalance(access, secret):
+<<<<<<< HEAD
     #print("poiuytrdfg")
+=======
+<<<<<<< HEAD
+=======
+    print("poiuytrdfg")
+>>>>>>> b1233d4fae1a14f7244a73977c0fea89ed3d7b09
+>>>>>>> 873ea9ba1583c7096d4d1ba95ca68694e0a61b42
     upbit = pyupbit.Upbit(access,  secret)
     balance = upbit.get_balance("KRW")
-    print(balance)
     return balance
 
 if __name__ == '__main__':

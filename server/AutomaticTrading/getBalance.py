@@ -6,8 +6,9 @@ import pyupbit
 def getBalance(access, secret):
     print("poiuytrdfg")
     upbit = pyupbit.Upbit(access,  secret)
-    print("원: {}".format(upbit.get_balances(ticker="KRW")))
-    return 3
+    balance = upbit.get_balance("KRW")
+    print(balance)
+    return balance
 
 if __name__ == '__main__':
     getBalance(sys.argv[1], sys.argv[2])

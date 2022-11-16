@@ -38,6 +38,7 @@
     "child_process": false
   },
   "proxy": "http://localhost:5000",
+  "secure": false,
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -87,7 +87,7 @@ const Trade_selling = () =>{
         </div>
         <div className="clearsell_btn">
         <Button className="clear_btn" onClick={clear_fun}>초기화</Button>   
-        <Button className="sell_btn" onClick={()=>selling_Datasend(sell_price, quantity)}>매도</Button>
+        <Button className="sell_btn" onClick={()=>selling_Datasend(sell_price, quantity,sum_price)}>매도</Button>
         </div>
     </div>
     )

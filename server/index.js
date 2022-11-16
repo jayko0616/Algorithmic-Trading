@@ -1,56 +1,3 @@
-let recvData = "";
-var coin_real_data = [];  
-const coininfo = [
-    {
-        
-        "tag" : "BTC",
-        "name_ko" : "비트코인",
-        "currency" : "0"
-        
-    },
-    {
-        "tag" : "ETH",
-        "name_ko" : "이더리움",
-        "currency" : "0"
-    },
-    {
-        "tag" : "XRP",
-        "name_ko" : "리플",
-        "currency" : "0"
-    },
-    {
-        "tag": "ETC",
-        "name_ko": "이더리움클래식",
-        "currency": "0"
-    },
-    {
-        "tag": "ADA",
-        "name_ko": "에이다",
-        "currency": "0"
-    },
-    {
-        "tag": "SAND",
-        "name_ko": "샌드박스",
-        "currency": "0"
-    },
-    {
-        "tag": "EOS",
-        "name_ko": "이오스",
-        "currency": "0"
-    },
-    {
-        "tag": "SOL",
-        "name_ko": "솔라나",
-        "currency": "0"
-    },
-    {
-        "tag": "DOGE",
-        "name_ko": "도지코인",
-        "currency": "0"
-    },
-];
-
-
 const express = require('express') //express 모듈 가져옴
 const app = express()
 const port = 5000;
@@ -60,14 +7,19 @@ const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
 const spawn = require('child_process').spawn;
+const cors = require("cors");
+
+
 var access;
 var secret;
 //application/x-www-form-urlencoded 이렇게 된 데이터를 분석해서 가져올 수 있게 함
 app.use(bodyParser.urlencoded({extended: true}));
 
 //application/json 얘는 이렇게 된 거 
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.json())
+app.use("*", cors())
 
 const mongoose = require('mongoose')
 mongoose.connect(config.mongoURI, {
@@ -81,12 +33,17 @@ mongoose.connect(config.mongoURI, {
  * 회원가입 요청 
  */
 
+app.post('/', function(req, res) {
+  // do something w/ req.body or req.files 
+});
+
+
 app.post('/api/users/register', (req, res) => {
   
   //회원가입할 때 필요한 정보들을 client에서 가져오면
   //그것들을 데이터베이스에 넣어준다. 
   User.init()
-
+  console.log("이건 실행중")
   const user = new User(req.body)
   
   //받은 데이터가 user model에 저장됨
@@ -205,5 +162,46 @@ app.post('/api/users/coin/balance', (req, res) => {
     console.log(data.toString());
   })
 })
+
+
+app.post('/api/users/coin/buy', (req, res)=>{
+  let name = req.body;
+  console.log(name);
+  const spawn = require('child_process').spawn;
+
+// 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
+    const result = spawn('python', ['./Trade_function/buy.py']);
+
+// 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
+    result.stdout.on('data', function(data) {
+        console.log(data.toString());
+    });
+
+// 4. 에러 발생 시, stderr의 'data'이벤트리스너로 실행결과를 받는다.
+    result.stderr.on('data', function(data) {
+        console.log(data.toString());
+    });
+});
+
+
+app.post('/api/users/coin/sell', (req, res)=>{
+  let name = req.body;
+  console.log(name);
+  // console.log('탐정이죠 ');
+  const spawn = require('child_process').spawn;
+
+// 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
+    const result = spawn('python', ['./Trade_function/sell']);
+
+// 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
+    result.stdout.on('data', function(data) {
+        console.log(data.toString());
+    });
+
+// 4. 에러 발생 시, stderr의 'data'이벤트리스너로 실행결과를 받는다.
+    result.stderr.on('data', function(data) {
+        console.log(data.toString());
+    });
+});
 
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

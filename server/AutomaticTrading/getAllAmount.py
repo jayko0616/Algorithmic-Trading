@@ -4,9 +4,10 @@ import pyupbit
 
 
 
-def getAllAmount(upbitKey):
-    amount = upbitKey.get_amount('ALL')
+def getAllAmount(access, secret):
+    upbit = pyupbit.Upbit(access,  secret)
+    amount = upbit.get_amount('ALL')
     return amount
 
 if __name__ == '__main__':
-    getAllAmount(sys.argv[1])
+    getAmount(sys.argv[1], sys.argv[2])

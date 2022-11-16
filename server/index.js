@@ -154,16 +154,13 @@ app.post('/api/users/coin/trading', (req, res) => {
 })
 
 app.post('/api/users/coin/balance', (req, res) => {  
-  console.log(access)
-  console.log(secret)
+  console.log("merong")
+
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
   result_01.stdout.on('data', function(data) {
     console.log(data.toString());
-  })
-  return res.json({
-    data
-  })
+});
 })
 
 

@@ -1,5 +1,4 @@
 import pyupbit
-import pprint
 
 f = open("./upbit.txt")
 lines = f.readlines()
@@ -8,5 +7,6 @@ secret = lines[1].strip()
 f.close()
 
 upbit = pyupbit.Upbit(access, secret)
-balance = upbit.get_balances()
-pprint.pprint(balance[0])
+balance = upbit.get_balance("KRW")
+print(balance)
+    

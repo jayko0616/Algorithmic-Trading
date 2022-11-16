@@ -10,24 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
     function CoinItem(props){
         const disPatch = useDispatch();
         const handleclick = (props) =>{
-            console.log(props);
             disPatch(change_coin(props.tag));
         }
-    // export default function CoinItem(){
-    // coinProvider = () =>{
-    //     const coin = this.props.tag;
-    //     // return(CoinChange(coin));
-    // }
-    // render(){
-        // const useStyles = makeStyles(theme => ({
-        //     cell_short: {
-        //         fontSize: "10px",
-        //         width: 100,
-        //         backgroundColor: 'green'
-          
-        //       },
-        //   }));
-        // const classes = useStyles();
         return(
             <TableRow className="Table_coin">
                 <TableCell onClick={()=>handleclick(props)} className="props_tag">{props.name_ko}</TableCell>

@@ -8,24 +8,14 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
 import { makeStyles } from "@material-ui/core/styles";
 import axios from 'axios'
-import data from './coin_real_data.json';
+// import data from "../../../server/json/coin_real_data.json"
+import data from "./coin_real_data.json"
 
+// const data = require('../../../server/coin_real_data.json') 
 
-
-// const styles = theme => ({
-//     root: {
-//         width: '100%',
-//         marginTop: theme.spacing.unit * 3,
-//         overflowX : "auto"
-//     },
-//     table: {
-//         minWidth : 1080
-//     }
-// })
 
 const coininfo = [
         {
-            
             "tag" : "BTC",
             "name_ko" : "비트코인",
             "currency" : "0"
@@ -77,9 +67,6 @@ const coininfo = [
 
 
 function CoinList (){
-    // render(){
-        // const { classes } = this.props;
-        const [price, setprice] = useState(0);
         coininfo[0].currency = data.BTC.price;
         coininfo[1].currency = data.ETH.price;
         coininfo[2].currency = data.XRP.price;
@@ -89,7 +76,6 @@ function CoinList (){
         coininfo[6].currency = data.EOS.price;
         coininfo[7].currency = data.SOL.price;
         coininfo[8].currency = data.DOGE.price;
-        var num = 0;
         useEffect(()=>{
             coininfo[0].currency = data.BTC.price;
             coininfo[1].currency = data.ETH.price;

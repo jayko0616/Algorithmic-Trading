@@ -154,25 +154,13 @@ app.post('/api/users/coin/trading', (req, res) => {
 })
 
 app.post('/api/users/coin/balance', (req, res) => {  
-<<<<<<< HEAD
   console.log("merong")
 
-=======
-  console.log(access)
-  console.log(secret)
->>>>>>> ff9cdeb4a2c76f34671007d648e1df8387c81693
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
   result_01.stdout.on('data', function(data) {
     console.log(data.toString());
-<<<<<<< HEAD
 });
-=======
-  })
-  return res.json({
-    data
-  })
->>>>>>> ff9cdeb4a2c76f34671007d648e1df8387c81693
 })
 
 

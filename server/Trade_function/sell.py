@@ -1,5 +1,5 @@
 def getValue():
-    print ("value")
+    print ("selling")
 
 if __name__ == '__main__':
     getValue()

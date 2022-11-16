@@ -59,7 +59,9 @@ const cookieParser = require('cookie-parser');
 const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 const { User } = require("./models/User");
-
+const spawn = require('child_process').spawn;
+var access;
+var secret;
 //application/x-www-form-urlencoded 이렇게 된 데이터를 분석해서 가져올 수 있게 함
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -143,6 +145,11 @@ app.post('/api/users/login', (req, res) => {
           user.generateToken((err, user) => {
             if(err) return res.status(400).send(err);
 
+            //accesskey and secretkey 설정 ! 
+            access = req.body.accessKey;
+            secret = req.body.coinApiKey;
+            console.log(access);
+
             //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
             res.cookie("x_auth", user.token)
               .status(200)
@@ -179,19 +186,24 @@ app.get('/api/users/logout', auth, (req, res) => {
 })
 
 app.post('/api/users/coin/trading', (req, res) => {
-  User.compareCoinApiKey(req.body.coinApiKey, (err, isMatch) => {
-    if(!isMatch)
-      return res.json({ startSuccess: false, message: "API KEY가 틀렸습니다."})
-    // 입력된 Coin Api Key가 맞으면 자동매매 실행 
-    res.status(200)
-       .json({ startSuccess: true, message: "API KEY 인증 성공"})
+  console.log("access: ", access)
+  const result = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
+  result.stdout.on('data', function(data) {
+    console.log(data.toString());
+  })
+  result.stderr.on('data', function(data) {
+    console.log(data.toString());
   })
 })
 
-app.get('/api/users/coin/set', (req, res) => {
-  const secret = req.body.coinApiKey;
-  const access = req.body.accessKey;
-  
+app.post('/api/users/coin/balance', (req, res) => {  
+  console.log(access)
+  console.log(secret)
+  const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
+
+  result_01.stdout.on('data', function(data) {
+    console.log(data.toString());
+  })
 })
 
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

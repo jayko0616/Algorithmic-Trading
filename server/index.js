@@ -160,7 +160,14 @@ app.post('/api/users/coin/balance', (req, res) => {
 
   result_01.stdout.on('data', function(data) {
     console.log(data.toString());
-});
+
+    res.status(200).json({
+      getUserBalance: true, 
+      balance: data.toString()
+    })
+  });
+
+  
 })
 
 

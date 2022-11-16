@@ -4,7 +4,7 @@ import {
     REGISTER_USER,
     TRADING_START,
     LOGOUT_USER,
-    ApiKey_Set
+    GET_BALANCE,
 } from './types';
 
 /**
@@ -64,4 +64,17 @@ export function tradingStart(dataToSubmit) {
         type: TRADING_START,
         payload: request
       }
+}
+
+
+export function getBalance(dataToSubmit) {
+  const request = axios.post('/api/users/coin/balance')
+  .then(response => response.data);
+
+  console.log(request);
+
+  return {
+    type: GET_BALANCE,
+    payload: request
+  }
 }

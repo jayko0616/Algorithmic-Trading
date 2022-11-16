@@ -151,6 +151,9 @@ app.post('/api/users/coin/balance', (req, res) => {
   result_01.stdout.on('data', function(data) {
     console.log(data.toString());
   })
+  return res.json({
+    data
+  })
 })
 
 app.listen(port, () => console.log(`Jayko app listening on port ${port}`))

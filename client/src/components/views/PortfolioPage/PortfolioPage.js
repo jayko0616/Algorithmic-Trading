@@ -7,17 +7,26 @@ import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 
 function PortfolioPage (){ 
-  useEffect(()=>{
-    axios.post('/api/users/coin/balance')
+
+  const getBalance = function() {
+    const request = axios.post('/api/users/coin/balance')
     .then(response => response.data);
+
+    return request
+  }
+
+  useEffect(()=>{
+    getBalance();
   });
 
+  const aa = getBalance().toString();
   
     return (
       <div className='layout'>
         <LandingHeader/>
         <Header/>
-        이건 포트폴리오 ~~
+        이건 포트폴리오 ~~ {aa}
+
         <Footer/>
       </div>
     )

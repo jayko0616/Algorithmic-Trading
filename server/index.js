@@ -1,3 +1,56 @@
+let recvData = "";
+var coin_real_data = [];  
+const coininfo = [
+    {
+        
+        "tag" : "BTC",
+        "name_ko" : "비트코인",
+        "currency" : "0"
+        
+    },
+    {
+        "tag" : "ETH",
+        "name_ko" : "이더리움",
+        "currency" : "0"
+    },
+    {
+        "tag" : "XRP",
+        "name_ko" : "리플",
+        "currency" : "0"
+    },
+    {
+        "tag": "ETC",
+        "name_ko": "이더리움클래식",
+        "currency": "0"
+    },
+    {
+        "tag": "ADA",
+        "name_ko": "에이다",
+        "currency": "0"
+    },
+    {
+        "tag": "SAND",
+        "name_ko": "샌드박스",
+        "currency": "0"
+    },
+    {
+        "tag": "EOS",
+        "name_ko": "이오스",
+        "currency": "0"
+    },
+    {
+        "tag": "SOL",
+        "name_ko": "솔라나",
+        "currency": "0"
+    },
+    {
+        "tag": "DOGE",
+        "name_ko": "도지코인",
+        "currency": "0"
+    },
+];
+
+
 const express = require('express') //express 모듈 가져옴
 const app = express()
 const port = 5000;

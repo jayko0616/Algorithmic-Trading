@@ -67,7 +67,7 @@ const Trade_selling = () =>{
         <div className="price_check">
                         <span className="check_left">주문 구분</span>
                         <input type="radio" name="check" value="1" onClick={(e) => checkOnlyOne(e)}/>지정가  
-                        <input type="radio" name="check" value="2" onClick={(e) => checkOnlyOne(e)}/>시작가
+                        <input type="radio" name="check" value="2" onClick={(e) => checkOnlyOne(e)}/>시장가
                         <input type="radio" name="check" value="3" onClick={(e) => checkOnlyOne(e)}/> 예약, 지정가 
         </div>
         <div className="sell_price">
@@ -87,7 +87,7 @@ const Trade_selling = () =>{
         </div>
         <div className="clearsell_btn">
         <Button className="clear_btn" onClick={clear_fun}>초기화</Button>   
-        <Button className="sell_btn" onClick={selling_Datasend}>매도</Button>
+        <Button className="sell_btn" onClick={()=>selling_Datasend(sell_price, quantity)}>매도</Button>
         </div>
     </div>
     )

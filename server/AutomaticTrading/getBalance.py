@@ -2,8 +2,17 @@
 import sys
 import pyupbit
 
+##
+# upbit에서 사용자의 잔고 불러오는 함수
+# 서버에서 access, secret key를 넘겨받아서 upbit 객체 생성 후
+# 잔고 return 
+# ###
 
 def getBalance(access, secret):
+<<<<<<< HEAD
+=======
+    print("poiuytrdfg")
+>>>>>>> b1233d4fae1a14f7244a73977c0fea89ed3d7b09
     upbit = pyupbit.Upbit(access,  secret)
     balance = upbit.get_balance("KRW")
     return balance

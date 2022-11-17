@@ -22,23 +22,15 @@ function PortfolioPage (){
     dispatch(getBalance())
     .then(response => {
       if(response.payload.getUserBalance) {
-        console.log(response.payload.balance)
-        alert("현재 잔고 " + response.payload.balance.toString() + "원")
-        //return response.payload.balance.toString()
         a = response.payload.balance;
-        console.log("this is a: ", a);
         setBalance(a);
       }
-      else{
-        a = "Not Connect"
-      }
+
     })
     return a;
   }
 
   balance();
-
-  console.log("this is a" , a);
 
 
     return (

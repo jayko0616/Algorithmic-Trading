@@ -126,7 +126,6 @@ app.get('/api/users/auth', auth, (req, res) => {
     name: req.user.name,
     email: req.user.email,
     coinApiKey: req.user.coinApiKey,
-    stockApiKey: req.user.stockApiKey
   })
 })
 

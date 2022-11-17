@@ -5,7 +5,8 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
-import { getBalance } from '../../../_actions/user_action';
+import { getBalance, getDictionary } from '../../../_actions/user_action';
+import { response } from 'express';
 
 
 
@@ -16,19 +17,33 @@ function PortfolioPage (){
   const [Balance, setBalance] = useState("0");
 
   
-  var a = "";
+  var userBalance = "";
 
   const balance = () => {
     dispatch(getBalance())
     .then(response => {
       if(response.payload.getUserBalance) {
-        a = response.payload.balance;
-        setBalance(a);
+        userBalance = response.payload.balance;
+        setBalance(userBalance);
       }
 
     })
-    return a;
   }
+
+  const dictonary = () => {
+    dispatch(getDictionary())
+    .then(response => {
+      if(response.payload.getUserDictionary){
+        console.log(response.payload.dictonary);
+      }
+    })
+
+  }
+
+
+
+
+  dictonary();
 
   balance();
 

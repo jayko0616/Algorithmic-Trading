@@ -1,9 +1,10 @@
 #{'코인이름': 가격}
 import sys
 import pyupbit
-
+import json
 
 def getDictionary(access, secret):
+    print(">>>딕셔너리 파이썬 실행<<<")
 
     upbit = pyupbit.Upbit(access, secret)
     coin_name_list = list()
@@ -25,6 +26,7 @@ def getDictionary(access, secret):
 
     coin_name_amount_json = json.loads(dictionary)
 
+    print(coin_name_amount_json)
     return coin_name_amount_json
 
 if __name__ == '__main__':

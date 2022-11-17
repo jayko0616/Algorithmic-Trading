@@ -23,7 +23,7 @@
     "mongoose": "^6.5.3",
     "zlib": "^1.0.5"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://localhost:5000/",
   "secure": false,
   "devDependencies": {
     "nodemon": "^2.0.19"

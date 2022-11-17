@@ -21,7 +21,7 @@ export default function(state = initState, action){
             return {...state, loginSuccess: action.payload.loginSuccess, userId:action.payload.userId }
 
         case LOGOUT_USER:
-            return {...state, success: action.payload }
+            return {...state, success: action.payload.success, loginSuccess: false, userId: '' }
     
         case REGISTER_USER:
             return {...state, register: action.payload }

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { registerUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
+import LandingHeader from '../LandingHeader/LandingHeader'
 
 import './RegisterPage.css';
 
@@ -100,7 +101,7 @@ function RegisterPage() {
 
   return (
     <div>
-   
+      <LandingHeader/>
     <div id="register" style={{
       display: 'flex', justifyContent: 'center', alignItems: 'center',
       width: '100%', height: '100vh'
@@ -130,7 +131,7 @@ function RegisterPage() {
           <input type="password" value={AccessKey} onChange={onAccessKeyHandler}></input>
           
           <br />
-          <button>
+          <button classname="regBtn">
             회원가입
           </button>
         </form>

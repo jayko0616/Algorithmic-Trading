@@ -136,6 +136,8 @@ app.get('/api/users/logout', auth, (req, res) => {
     {token: ""},
     (err, user) => {
       if(err) return res.json({ success: false, err});
+      access = '';
+      secret = '';
       return res.status(200).send({
         success: true
       })
@@ -154,17 +156,35 @@ app.post('/api/users/coin/trading', (req, res) => {
 })
 
 app.post('/api/users/coin/balance', (req, res) => {  
-  console.log(access)
-  console.log(secret)
+
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
   result_01.stdout.on('data', function(data) {
-    console.log(data.toString());
-  })
-  return res.json({
-    data
-  })
+    res.status(200).json({
+      getUserBalance: true, 
+      balance: data.toString()
+    })
+  });
+
+  
 })
+
+
+app.post('/api/users/coin/dictionary', (req, res) => {  
+
+
+  const result = spawn('python', ['./AutomaticTrading/getDictionary.py', access, secret]);
+
+  result.stdout.on('data', function(data) {
+    res.status(200).json({
+      getUserDictionary: true, 
+      dictionary: data
+    })
+  });
+
+  
+})
+
 
 
 app.post('/api/users/coin/buy', (req, res)=>{

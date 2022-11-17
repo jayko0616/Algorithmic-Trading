@@ -8,15 +8,20 @@ import Trade_buying from "./Trade_buying";
 import Trade_selling from "./Trade_selling";
 import Trade_info from "./Trade_info";
 import Coin_mp from "../Coin_chart/Coin_mp";
-
-
+import { tradingStart } from "../_actions/user_action";
+import { useDispatch } from "react-redux";
 
 function Trade_check(){
+
+    const dispatch = useDispatch();
+
     const [sell_price, set_sell_price] = useState(0);
     const [quantity, set_quantity ] = useState(0);
     const [sum_price , set_sum_price] = useState(0);
     const [checkValue, setCheckValue ] = useState('');
     const [isBuying, setIsBuying] = useState(1);
+    const [tradingBtn, setTradingBtn] = useState(1);
+    console.log(tradingBtn)
 
     function checkOnlyOne(id) {
         console.log('id', id);
@@ -41,9 +46,42 @@ function Trade_check(){
         setIsBuying(3);
     }
 
+    const onAutoTradingHandler = (event) => {
+        //'api/users/coin/traindg' 으로 요청 보내슈 
+        if(tradingBtn === 1 ){
+            setTradingBtn(2);
+            dispatch(tradingStart())
+        }
+        else{
+            setTradingBtn(1);
+        }
+    }
+
+    function getTargetCoin(value){
+        console.log(value)
+    }
+
 
     return(
         <TableRow className="Table_trade">
+            <div>
+                <form name="tradingStart" onSubmit={onAutoTradingHandler}>
+                    <select name="coins" onchange={getTargetCoin(this.value)} required>
+                        <option value='' selected>종목 선택</option>
+                        <option value="BTC">BTC(비트코인)</option>
+                        <option value="ETH">ETH(이더리움)</option>
+                        <option value="XRP">XRP(리플)</option>
+                        <option value="ETC">ETC(이더리움클래식)</option>
+                        <option value="ADA">ADA(에이다)</option>
+                        <option value="SAND">SAND(샌드박스)</option>
+                        <option value="EOS">EOS(이오스)</option>
+                        <option value="SOL">SOL(솔라나)</option>
+                        <option value="DOGE">DOGE(도지코인)</option>
+                    </select>
+                    {tradingBtn === 1 && <button>자동매매 시작</button>}
+                    {tradingBtn === 2 && <button>자동매매 중단하기</button>}
+                </form>
+            </div>
                 <TableCell className="Table_buying" onClick={table_buying_fuc}>매수</TableCell>
                 <TableCell className="Table_selling" onClick={table_selling_fuc}>매도</TableCell>
                 <TableCell className="Table_bill" onClick={table_transinfo_fuc}>거래내역</TableCell>

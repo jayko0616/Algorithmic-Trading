@@ -4,7 +4,8 @@ import {
     REGISTER_USER,
     TRADING_START,
     LOGOUT_USER,
-    ApiKey_Set
+    GET_BALANCE,
+    GET_DICTIONARY
 } from './types';
 
 /**
@@ -64,4 +65,25 @@ export function tradingStart(dataToSubmit) {
         type: TRADING_START,
         payload: request
       }
+}
+
+
+export function getBalance(dataToSubmit) {
+  const request = axios.post('/api/users/coin/balance')
+  .then(response => response.data);
+
+  return {
+    type: GET_BALANCE, 
+    payload: request
+  }
+}
+
+export function getDictionary(dataToSubmit) {
+  const request = axios.post('/api/users/coin/dictionary')
+  .then(response => response.data);
+
+  return {
+    type: GET_DICTIONARY, 
+    payload: request
+  }
 }

@@ -4,5 +4,27 @@
 }
 
 .layout{
+    background-color: #DBE0D5;
     height: 100vh;
+}
+
+body { 
+    background-color: #2C2D2A;
+}
+
+html{ 
+    background-color: #DBE0D5;
+}
+
+.vertical{
+    /*height:74.75vh;*/
+    height: 75vh;
+    width: .1vw;
+    border-width: 0;
+    color:#DBE0D5;
+    background-color: #666;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
 }

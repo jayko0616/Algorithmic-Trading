@@ -3,8 +3,16 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import {useDispatch} from "react-redux";
 import { change_coin } from '../_actions/chart_action';
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        color: '#DBE0D5'
+    },
+    body: {
+        color: '#DBE0D5'
+    }
+}))(TableCell);
 // class CoinItem extends React.Component{
 
     function CoinItem(props){
@@ -14,9 +22,9 @@ import { makeStyles } from "@material-ui/core/styles";
         }
         return(
             <TableRow className="Table_coin">
-                <TableCell onClick={()=>handleclick(props)} className="props_tag">{props.name_ko}</TableCell>
-                <TableCell onClick={()=>handleclick(props)} className="props_name_ko">{props.currency}</TableCell>
-                <TableCell onClick={()=>handleclick(props)} className="props_currency">{props.tag}</TableCell>
+                <CustomTableCell onClick={()=>handleclick(props)} className="props_tag">{props.name_ko}</CustomTableCell>
+                <CustomTableCell onClick={()=>handleclick(props)} className="props_name_ko">{props.currency}</CustomTableCell>
+                <CustomTableCell onClick={()=>handleclick(props)} className="props_currency">{props.tag}</CustomTableCell>
             </TableRow>
         )
     }

@@ -1,32 +1,62 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import  axios  from 'axios';
 import { useDispatch } from 'react-redux'
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
+import { getBalance, getDictionary } from '../../../_actions/user_action';
+import { response } from 'express';
+
+
 
 function PortfolioPage (){ 
+  
+  
+  const dispatch = useDispatch();
+  const [Balance, setBalance] = useState("0");
 
-  const getBalance = function() {
-    const request = axios.post('/api/users/coin/balance')
-    .then(response => response.data);
+  
+  var userBalance = "";
 
-    return request
+  const balance = () => {
+    dispatch(getBalance())
+    .then(response => {
+      if(response.payload.getUserBalance) {
+        userBalance = response.payload.balance;
+        setBalance(userBalance);
+      }
+
+    })
   }
 
-  useEffect(()=>{
-    getBalance();
-  });
+  const dictonary = () => {
+    dispatch(getDictionary())
+    .then(response => {
+      if(response.payload.getUserDictionary){
+        console.log(response.payload.dictonary);
+      }
+    })
 
-  const aa = getBalance().toString();
-  
+  }
+
+
+
+
+  dictonary();
+
+  balance();
+
+
     return (
       <div className='layout'>
         <LandingHeader/>
         <Header/>
-        이건 포트폴리오 ~~ {aa}
-
+        <body>
+          이건 포트폴리오 ~~
+          <span id = "balance">잔액은!!</span>
+          <input className="balance" value={Balance}></input>
+        </body>
         <Footer/>
       </div>
     )

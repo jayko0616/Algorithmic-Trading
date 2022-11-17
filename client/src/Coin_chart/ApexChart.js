@@ -107,22 +107,31 @@ export default function ApexChart(){
               type: 'candlestick',
             },
             title: {
-              text: coin_name_+" Chart",
-              align: 'left'
+              text: coin_name_,
+              align: 'center',
+              style: {
+                color: '#FFFFFF',
+                fontSize: '25px'
+              }
             },
             subtitle:{
-              text: close[99]+ " KRW",
-              align: 'left',
+              text: Intl.NumberFormat('en-US').format(close[99])+ " KRW",
+              align: 'center',
               style: {
-                fontSize:  '20px',
+                fontSize:  '23px',
                 fontWeight:  'bold',
                 fontFamily:  undefined,
-                color:  '#50bcdf'
+                color:  '#5CC9FA'
               },
             },
             xaxis: {
               type: 'category',
               labels: {
+                style: {
+                  colors: '#DBE0D5',
+                  fontSize: '12px',
+                  fontWeight: 'bold'
+                },
                 formatter: function(val){
                   return dayjs(val).format('MMM DD HH:mm')
                 }
@@ -131,13 +140,20 @@ export default function ApexChart(){
             yaxis: {
               tooltip: {
                 enabled: true
+              },
+              labels: {
+                style: {
+                  colors: '#DBE0D5',
+                  fontSize: '12px',
+                  fontWeight: 'bold'
+                }
               }
             }
           }
 
       return (
   <div id="chart">
-    <div>
+    <div className="times">
     <Button className="btn_oneminite" onClick={() => change_minute(1)} >1분</Button>
     <Button className="btn_thirtyminite" onClick={() => change_minute(30)}>30분</Button>
     <Button className="btn_onehour" onClick={() => change_minute(60)}>1시간</Button>

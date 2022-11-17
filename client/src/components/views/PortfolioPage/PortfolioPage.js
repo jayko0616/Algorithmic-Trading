@@ -29,6 +29,7 @@ function PortfolioPage (){
         console.log(response.payload.balance)
         alert("현재 잔고 " + response.payload.balance.toString() + "원")
         a = response.payload.balance.toString()
+      
       }
       else{
         a = '안됐엉';
@@ -36,22 +37,26 @@ function PortfolioPage (){
     })
   });
   
+
   const balance = () => {
+    var b;
     dispatch(getBalance())
     .then(response => {
       if(response.payload.getUserBalance) {
         console.log(response.payload.balance)
         alert("현재 잔고 " + response.payload.balance.toString() + "원")
         //return response.payload.balance.toString()
-        return "balance 가져오기 함수!"
+        b = response.payload.balance.toString();
+      }
+      else{
+        b = "Not Connect"
       }
     })
+    return b;
   }
 
-  const temp = () => {
-    return "임시 테스트용 함수!"
-  }
-
+  console.log("결과: " , balance());
+  
     return (
       <div className='layout'>
         <LandingHeader/>

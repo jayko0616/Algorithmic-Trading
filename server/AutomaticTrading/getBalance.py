@@ -12,6 +12,7 @@ def getBalance(access, secret):
 
     upbit = pyupbit.Upbit(access,  secret)
     balance = upbit.get_balance("KRW")
+    print(balance)
     return balance
 
 if __name__ == '__main__':

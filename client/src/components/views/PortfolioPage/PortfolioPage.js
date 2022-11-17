@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { getBalance, getDictionary } from '../../../_actions/user_action';
-
+import Auth from '../../../hoc/auth';
 
 
 
@@ -49,7 +49,7 @@ function PortfolioPage (){
         <Header/>
         <body>
           이건 포트폴리오 ~~
-          <span id = "balance">잔액은!!{balance()}</span>
+          <span id = "balance">잔액은!!</span>
           <input className="balance" value={Balance}></input>
         </body>
         <Footer/>
@@ -58,4 +58,4 @@ function PortfolioPage (){
 }
 
 
-export default PortfolioPage;
+export default Auth(PortfolioPage, true);

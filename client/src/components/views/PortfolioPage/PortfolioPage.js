@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import  axios  from 'axios';
 import { useDispatch } from 'react-redux'
 import Footer from '../Footer/Footer';
@@ -6,64 +6,49 @@ import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { getBalance } from '../../../_actions/user_action';
-let a = '디폴트 잔고값!';
+
+
 
 function PortfolioPage (){ 
-  const dispatch = useDispatch();
-/*
-  const getBalance = function() {
-    const request = axios.post('/api/users/coin/balance')
-    .then(response => response.data);
-
-    console.log(request);
-
-    return request
-  }
-
-*/
-
-  useEffect(()=>{
-    dispatch(getBalance())
-    .then(response => {
-      if(response.payload.getUserBalance) {
-        console.log(response.payload.balance)
-        alert("현재 잔고 " + response.payload.balance.toString() + "원")
-        a = response.payload.balance.toString()
-      
-      }
-      else{
-        a = '안됐엉';
-      }
-    })
-  });
   
+  
+  const dispatch = useDispatch();
+  const [Balance, setBalance] = useState("0");
+
+  
+  var a = "";
 
   const balance = () => {
-    var b;
     dispatch(getBalance())
     .then(response => {
       if(response.payload.getUserBalance) {
         console.log(response.payload.balance)
         alert("현재 잔고 " + response.payload.balance.toString() + "원")
         //return response.payload.balance.toString()
-        b = response.payload.balance.toString();
+        a = response.payload.balance;
+        console.log("this is a: ", a);
+        setBalance(a);
       }
       else{
-        b = "Not Connect"
+        a = "Not Connect"
       }
     })
-    return b;
+    return a;
   }
 
-  console.log("결과: " , balance());
-  
+  balance();
+
+  console.log("this is a" , a);
+
+
     return (
       <div className='layout'>
         <LandingHeader/>
         <Header/>
         <body>
           이건 포트폴리오 ~~
-          <span id = "balance">잔액은!! {balance()} {a}</span>
+          <span id = "balance">잔액은!!</span>
+          <input className="balance" value={Balance}></input>
         </body>
         <Footer/>
       </div>

@@ -1,3 +1,20 @@
 #register {
     background-color: #DBE0D5;
 }
+
+#register input {
+    border: none;
+    color:#222222;
+    padding: 4px;
+}
+#register button{
+    background-color: #FFFFFF;
+    border: none;
+    font-weight: bold;
+}
+
+#register label {
+    color: #666;
+    font-weight: bold;
+    padding:2px;
+}

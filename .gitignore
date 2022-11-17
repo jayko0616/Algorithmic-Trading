@@ -4,3 +4,4 @@
 #Optional eslint cache
 .eslintcache
 
+*.pack

@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { getBalance, getDictionary } from '../../../_actions/user_action';
-import { response } from 'express';
+
 
 
 

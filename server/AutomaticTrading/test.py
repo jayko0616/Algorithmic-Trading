@@ -7,6 +7,6 @@ secret = lines[1].strip()
 f.close()
 
 upbit = pyupbit.Upbit(access, secret)
-amount = upbit.get_amount("BTC")
+amount = upbit.get_amount('ALL')
 print(amount)
     

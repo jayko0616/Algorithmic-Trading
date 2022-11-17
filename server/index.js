@@ -156,13 +156,10 @@ app.post('/api/users/coin/trading', (req, res) => {
 })
 
 app.post('/api/users/coin/balance', (req, res) => {  
-  console.log("merong")
 
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
   result_01.stdout.on('data', function(data) {
-    console.log(data.toString());
-
     res.status(200).json({
       getUserBalance: true, 
       balance: data.toString()
@@ -171,6 +168,23 @@ app.post('/api/users/coin/balance', (req, res) => {
 
   
 })
+
+
+app.post('/api/users/coin/dictionary', (req, res) => {  
+
+
+  const result = spawn('python', ['./AutomaticTrading/getDictionary.py', access, secret]);
+
+  result.stdout.on('data', function(data) {
+    res.status(200).json({
+      getUserDictionary: true, 
+      dictionary: data
+    })
+  });
+
+  
+})
+
 
 
 app.post('/api/users/coin/buy', (req, res)=>{

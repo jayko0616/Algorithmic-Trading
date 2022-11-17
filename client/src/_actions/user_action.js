@@ -5,6 +5,7 @@ import {
     TRADING_START,
     LOGOUT_USER,
     GET_BALANCE,
+    GET_DICTIONARY
 } from './types';
 
 /**
@@ -73,6 +74,16 @@ export function getBalance(dataToSubmit) {
 
   return {
     type: GET_BALANCE, 
+    payload: request
+  }
+}
+
+export function getDictionary(dataToSubmit) {
+  const request = axios.post('/api/users/coin/dictionary')
+  .then(response => response.data);
+
+  return {
+    type: GET_DICTIONARY, 
     payload: request
   }
 }

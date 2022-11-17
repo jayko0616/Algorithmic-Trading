@@ -62,11 +62,14 @@ const Trade_buying = () =>{
 
     return(
         <div>
-            <div className="price_check">
+            <div className="price_check_b">
                             <span className="check_left">주문 구분</span>
-                            <input type="radio" name="check" value="1" onClick={(e) => checkOnlyOne(e)}/>지정가  
-                            <input type="radio" name="check" value="2" onClick={(e) => checkOnlyOne(e)}/>시장가
-                            <input type="radio" name="check" value="3" onClick={(e) => checkOnlyOne(e)}/> 예약, 지정가 
+                            <input type="radio" name="check" value="1" onClick={(e) => checkOnlyOne(e)}/>
+                            <span className="radiotext">지정가</span>
+                            <input type="radio" name="check" value="2" onClick={(e) => checkOnlyOne(e)}/>
+                            <span className="radiotext">시장가</span>
+                            <input type="radio" name="check" value="3" onClick={(e) => checkOnlyOne(e)}/>
+                            <span className="radiotext">예약, 지정가</span>
             </div>
             <div className="sell_price">
                             매수 가격(KRW)

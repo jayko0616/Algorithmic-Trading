@@ -6,10 +6,11 @@ import  TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from '@material-ui/core/TableCell';
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import axios from 'axios'
 // import data from "../../../server/json/coin_real_data.json"
 import data from "./coin_real_data.json"
+import { colors } from "@material-ui/core";
 
 // const data = require('../../../server/coin_real_data.json') 
 
@@ -63,8 +64,14 @@ const coininfo = [
         },
 ];
 
-
-
+const CustomTableCell = withStyles(theme => ({
+    head: {
+        backgroundColor: '#2C2D2A',
+        color: '#DBE0D5',
+        fontStyle: 'bold',
+        fontSize: '15px'
+    }
+}))(TableCell);
 
 function CoinList (){
         coininfo[0].currency = data.BTC.price;
@@ -87,15 +94,18 @@ function CoinList (){
             coininfo[7].currency = data.SOL.price;
             coininfo[8].currency = data.DOGE.price;
         },data)
+
+        
         return(
+            
             <div className="list">
                 {/* <Table className = {classes.table}> */}
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>한글명</TableCell>
-                            <TableCell>현재가</TableCell>
-                            <TableCell>태그</TableCell>
+                            <CustomTableCell>한글명</CustomTableCell>
+                            <CustomTableCell>현재가</CustomTableCell>
+                            <CustomTableCell>태그</CustomTableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

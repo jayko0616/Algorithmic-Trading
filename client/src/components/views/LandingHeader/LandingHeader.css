@@ -1,5 +1,18 @@
 .landingheader{
+    background-color: #DBE0D5;
     text-align: center;
-    font-size: 40px;
+    font-size: 25px;
     font-family: 'Times New Roman';
+}
+
+.hr1{
+    margin-bottom: 3px;
+    height: 0.5px;
+    background: #2C2D2A;
+}
+.hr2{
+    margin-top: 1px;
+    margin-bottom: 1px;
+    height: 0.5px;
+    background: #2C2D2A;
 }

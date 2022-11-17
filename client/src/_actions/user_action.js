@@ -72,7 +72,7 @@ export function getBalance(dataToSubmit) {
   .then(response => response.data);
 
   return {
-    type: GET_BALANCE,
+    type: GET_BALANCE, 
     payload: request
   }
 }

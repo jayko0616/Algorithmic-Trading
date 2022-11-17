@@ -42,7 +42,8 @@ function PortfolioPage (){
       if(response.payload.getUserBalance) {
         console.log(response.payload.balance)
         alert("현재 잔고 " + response.payload.balance.toString() + "원")
-        return response.payload.balance.toString()
+        //return response.payload.balance.toString()
+        return "balance 가져오기 함수!"
       }
     })
   }
@@ -57,7 +58,7 @@ function PortfolioPage (){
         <Header/>
         <body>
           이건 포트폴리오 ~~
-          <span id = "balance">잔액은!! {temp()}</span>
+          <span id = "balance">잔액은!! {balance()} {a}</span>
         </body>
         <Footer/>
       </div>

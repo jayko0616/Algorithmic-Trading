@@ -66,7 +66,7 @@ function Trade_check(){
         <TableRow className="Table_trade">
             <div>
                 <form name="tradingStart" onSubmit={onAutoTradingHandler}>
-                    <select name="coins" onchange={getTargetCoin(this.value)} required>
+                    <select name="coins" required>
                         <option value='' selected>종목 선택</option>
                         <option value="BTC">BTC(비트코인)</option>
                         <option value="ETH">ETH(이더리움)</option>

@@ -6,7 +6,7 @@ import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { getBalance, getDictionary } from '../../../_actions/user_action';
-import { response } from 'express';
+
 
 
 
@@ -33,20 +33,15 @@ function PortfolioPage (){
   const dictonary = () => {
     dispatch(getDictionary())
     .then(response => {
-      if(response.payload.getUserDictionary){
-        console.log(response.payload.dictonary);
-      }
+      console.log("딕셔너리를 내놔라!!!!!!")
+      console.log(response.payload.dictionary);
     })
 
   }
 
-
-
-
   dictonary();
 
   balance();
-
 
     return (
       <div className='layout'>
@@ -54,7 +49,7 @@ function PortfolioPage (){
         <Header/>
         <body>
           이건 포트폴리오 ~~
-          <span id = "balance">잔액은!!</span>
+          <span id = "balance">잔액은!!{balance()}</span>
           <input className="balance" value={Balance}></input>
         </body>
         <Footer/>

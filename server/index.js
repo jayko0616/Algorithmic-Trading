@@ -53,7 +53,7 @@ app.post('/api/users/register', (req, res) => {
         console.log(err);
         return res.json({ success: false, err})
       }
-      console.log("user.save!");
+      console.log("회원가입 !");
       return res.status(200).json({
         success: true
       })
@@ -105,7 +105,6 @@ app.post('/api/users/login', (req, res) => {
             //accesskey and secretkey 설정 ! 
             access = req.body.accessKey;
             secret = req.body.coinApiKey;
-            console.log(access);
 
             //client -> cookie에 token을 저장한다. cf. 서버는 DB에 저장
             res.cookie("x_auth", user.token)
@@ -138,6 +137,7 @@ app.get('/api/users/logout', auth, (req, res) => {
       if(err) return res.json({ success: false, err});
       access = '';
       secret = '';
+      console.log("로그아웃!")
       return res.status(200).send({
         success: true
       })
@@ -160,10 +160,13 @@ app.post('/api/users/coin/balance', (req, res) => {
   const result_01 = spawn('python', ['./AutomaticTrading/getBalance.py', access, secret]);
 
   result_01.stdout.on('data', function(data) {
+    
     res.status(200).json({
       getUserBalance: true, 
       balance: data.toString()
     })
+    
+   
   });
 
   
@@ -171,15 +174,19 @@ app.post('/api/users/coin/balance', (req, res) => {
 
 
 app.post('/api/users/coin/dictionary', (req, res) => {  
+  console.log("딕셔너리 서버로는 들어왔나?")
 
+  const result_02 = spawn('python', ['./AutomaticTrading/getDictionary.py', access, secret]);
 
-  const result = spawn('python', ['./AutomaticTrading/getDictionary.py', access, secret]);
-
-  result.stdout.on('data', function(data) {
+  result_02.stdout.on('data', function(data) {
     res.status(200).json({
       getUserDictionary: true, 
-      dictionary: data
+      dictionary: data.toString()
     })
+  });
+
+  result_02.stderr.on('data', function(data) {
+    console.log("딕셔너리 에러났어요.");
   });
 
   

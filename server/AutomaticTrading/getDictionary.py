@@ -23,8 +23,9 @@ def getDictionary(access, secret):
 
     dictionary = dict(zip(coin_name_list,coin_amount_list))
 
-    coin_name_amount_json = json.loads(dictionary)
+    coin_name_amount_json = json.dumps(dictionary)
 
+    print(balances[0])
     print(coin_name_amount_json)
     return coin_name_amount_json
 

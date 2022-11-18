@@ -16,6 +16,7 @@ function PieChart() {
                 sss = sss.replace(']', '');
                 console.log("str is..", str)
                 setStr(sss);
+                
         })
     }
     

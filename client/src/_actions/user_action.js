@@ -6,7 +6,8 @@ import {
     LOGOUT_USER,
     GET_BALANCE,
     GET_DICTIONARY,
-    AUTH_USER
+    AUTH_USER,
+    GET_INFO
 } from './types';
 
 export function auth(dataToSubmit){
@@ -94,6 +95,16 @@ export function getDictionary(dataToSubmit) {
 
   return {
     type: GET_DICTIONARY, 
+    payload: request
+  }
+}
+
+export function getInformation(dataToSubmit){
+  const request = axios.get('api/users/coin/userData')
+  .then(response => response.data)
+
+  return {
+    type: GET_INFO,
     payload: request
   }
 }

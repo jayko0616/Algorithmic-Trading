@@ -4,6 +4,7 @@ import pyupbit
 import json
 
 def getDictionary(access, secret):
+    print(">>>딕셔너리 파이썬 실행<<<")
 
     upbit = pyupbit.Upbit(access, secret)
     coin_name_list = list()

@@ -7,7 +7,7 @@ import {Button} from 'react-bootstrap';
 import Trade_buying from "./Trade_buying";
 import Trade_selling from "./Trade_selling";
 import Trade_info from "./Trade_info";
-import Coin_mp from "../Coin_chart/Coin_mp";
+// import Coin_mp from "../Coin_chart/Coin_mp";
 import { tradingStart } from "../_actions/user_action";
 import { useDispatch } from "react-redux";
 

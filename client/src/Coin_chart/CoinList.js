@@ -99,7 +99,6 @@ function CoinList (){
         return(
             
             <div className="list">
-                {/* <Table className = {classes.table}> */}
                 <Table>
                     <TableHead>
                         <TableRow>

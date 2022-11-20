@@ -13,7 +13,6 @@ const CustomTableCell = withStyles(theme => ({
         color: '#DBE0D5'
     }
 }))(TableCell);
-// class CoinItem extends React.Component{
 
     function CoinItem(props){
         const disPatch = useDispatch();

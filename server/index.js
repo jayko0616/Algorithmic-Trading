@@ -183,6 +183,14 @@ app.post('/api/users/coin/dictionary', (req, res) => {
   });
 })
 
+app.get('api/users/coin/userData',function(req, res){
+  var info = User.getInfo()
+  res.json({
+    email: info.email,
+    name: info.name,
+    phone: info.phone
+  })
+});
 
 app.post('/api/users/coin/buy', (req, res)=>{
   let name = req.body;

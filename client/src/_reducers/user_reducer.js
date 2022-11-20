@@ -24,10 +24,10 @@ export default function(state = initState, action){
             return {...state, success: action.payload.success, loginSuccess: false, userId: '' }
     
         case REGISTER_USER:
-            return {...state, register: action.payload }
+            return {...state, register: action.payload}
         
         case AUTH_USER:
-            return {...state, register: action.payload }
+            return {...state,  userData: action.payload}
             
         case TRADING_START:
             return {...state, startSuccess: action.payload , message: action.payload.message}

@@ -7,6 +7,7 @@ import CoinList from '../../../Coin_chart/CoinList';
 import Trade_check from '../../../Coin_Trade/Trade_check';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { useNavigate } from 'react-router-dom';
+import Auth from '../../../hoc/auth';
 
 function MainPage (){ 
     const navigate = useNavigate();
@@ -52,4 +53,4 @@ function MainPage (){
 }
 
 
-export default MainPage
+export default Auth(MainPage, null);

@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import Footer from '../Footer/Footer';
 import './LoginPage.css';
+import Auth from '../../../hoc/auth';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -109,4 +110,4 @@ function LoginPage() {
   )
 }
 
-export default LoginPage
+export default Auth(LoginPage, false);

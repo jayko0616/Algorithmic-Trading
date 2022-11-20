@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux'
 import { registerUser } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 import LandingHeader from '../LandingHeader/LandingHeader'
-
+import Auth from '../../../hoc/auth';
 import './RegisterPage.css';
 
 
@@ -140,4 +140,4 @@ function RegisterPage() {
   )
 }
 
-export default RegisterPage
+export default Auth(RegisterPage, false);

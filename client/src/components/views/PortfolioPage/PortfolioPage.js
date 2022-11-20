@@ -7,6 +7,7 @@ import '../MainPage/MainPage.css';
 import LandingHeader from '../LandingHeader/LandingHeader';
 import { getBalance, getDictionary } from '../../../_actions/user_action';
 
+import Auth from '../../../hoc/auth';
 
 
 
@@ -58,4 +59,4 @@ function PortfolioPage (){
 }
 
 
-export default PortfolioPage;
+export default Auth(PortfolioPage, true);

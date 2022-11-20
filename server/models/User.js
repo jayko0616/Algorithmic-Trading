@@ -152,6 +152,22 @@ userSchema.methods.compareAccessApiKey = function(plainAccessKey, cb) {
     }) 
 }
 
+userSchema.methods.getInfo = function(cb) {
+    var user = this;
+
+    const info = {
+        emiel: this.email,
+        name: this.name,
+        phone: this.phone
+    }
+
+    if(err) {
+        return cb(err);
+    }
+    cb(null, info)
+
+}
+
 const User = mongoose.model('User',userSchema)
 
 module.exports = { User }

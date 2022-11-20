@@ -13,6 +13,7 @@ import PortfolioPage from './components/views/PortfolioPage/PortfolioPage'
 import MyinformationPage from './components/views/MyinformationPage/MyinformationPage'
 import NoticePage from './components/views/NoticePage/NoticePage'
 
+import Auth from './hoc/auth';
 
 function App() {
   return (
@@ -27,25 +28,6 @@ function App() {
       <Route exact path="/notice" element={<NoticePage/>}></Route>
     </Routes>
     </BrowserRouter>
-    
-    /*
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-    */
   );
 }
 

@@ -5,9 +5,20 @@ import {
     TRADING_START,
     LOGOUT_USER,
     GET_BALANCE,
-    GET_DICTIONARY
+    GET_DICTIONARY,
+    AUTH_USER,
+    GET_INFO
 } from './types';
 
+export function auth(dataToSubmit){
+  const request = axios.get('/api/users/auth')
+    .then(response => response.data)
+
+  return {
+    type: AUTH_USER,
+    payload: request
+  }
+}
 /**
  * 서버로 로그인 요청 함수
  * @param {*} User { email, password }
@@ -84,6 +95,16 @@ export function getDictionary(dataToSubmit) {
 
   return {
     type: GET_DICTIONARY, 
+    payload: request
+  }
+}
+
+export function getInformation(dataToSubmit){
+  const request = axios.get('api/users/coin/userData')
+  .then(response => response.data)
+
+  return {
+    type: GET_INFO,
     payload: request
   }
 }

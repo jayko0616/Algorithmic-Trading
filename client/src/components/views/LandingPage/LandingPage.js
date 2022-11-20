@@ -6,6 +6,7 @@ import { logout } from '../../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import LandingHeader from '../LandingHeader/LandingHeader';
+import Auth from '../../../hoc/auth'
 
 function LandingPage() {
 
@@ -106,4 +107,4 @@ function LandingPage() {
   )
 }
 
-export default LandingPage
+export default Auth(LandingPage, null);

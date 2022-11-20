@@ -6,6 +6,8 @@ export const LOGOUT_USER = "logout_user";
 export const AUTH_USER = "auth_user";
 export const GET_BALANCE = "get_balance";
 export const GET_DICTIONARY = "get_dictionary";
+export const GET_INFO = 'get_info';
+
 
 //coin chart types 
 export const BTC = "BTC";

@@ -20,7 +20,6 @@ export default function ApexChart(){
     const getApi_day = async(coin_name) =>{ 
       await axios.get('https://api.upbit.com/v1/candles/days/?market=KRW-'+ coin_name +'&count=100')
       .then((res) =>{
-        // console.log(res);
         for(let i = 0; i < res.data.length; i++){
           if(res.data[i].market != null){
               setcoinInfo(prev => {return [...prev, res.data[i]]})
@@ -43,10 +42,8 @@ export default function ApexChart(){
           }
       }
       }) 
-      // console.log(minute_);
     }
     useEffect(() => {
-      // console.log("coin::", coin_name_);
       time_ ? (getApi_day(coin_name_)) : (getApi_minute(coin_name_));
     },[coin_name_ , minute_, time_])
 
@@ -58,7 +55,6 @@ export default function ApexChart(){
 
     // 일을 바꾸는 함수 
     const change_day = () =>{  
-      // set_minute_(time);
       set_time_(true);
     }
 
@@ -75,8 +71,6 @@ export default function ApexChart(){
     high.length = 0;
     data_ex.length = 0;
 
-
-    // console.log(xrpInfo)
     coinInfo.map(({candle_date_time_kst, opening_price, high_price, low_price, trade_price}) =>{
       time.push(candle_date_time_kst);
       open.push(opening_price);
@@ -160,12 +154,8 @@ export default function ApexChart(){
     <Button className="btn_fourhour" onClick={() => change_minute(240)}>4시간</Button>  
     <Button className="btn_oneday" onClick={() => change_day()}>1일</Button> 
     </div> 
-    {/* <Button onClick={()=>setname('BTC')}>클릭</Button> */}
 <ReactApexChart options={options} series={series} type="candlestick" height={400} width={500}/>
   </div>
       );
 }
 
-
-// export default connect(mapStateToProps)(ApexChart);
-// export default ApexChart;

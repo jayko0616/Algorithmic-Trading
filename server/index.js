@@ -126,7 +126,6 @@ app.get('/api/users/auth', auth, (req, res) => {
     name: req.user.name,
     email: req.user.email,
     coinApiKey: req.user.coinApiKey,
-    stockApiKey: req.user.stockApiKey
   })
 })
 
@@ -192,6 +191,14 @@ app.post('/api/users/coin/dictionary', (req, res) => {
   
 })
 
+app.get('api/users/coin/userData',function(req, res){
+  var info = User.getInfo()
+  res.json({
+    email: info.email,
+    name: info.name,
+    phone: info.phone
+  })
+});
 
 
 app.post('/api/users/coin/buy', (req, res)=>{

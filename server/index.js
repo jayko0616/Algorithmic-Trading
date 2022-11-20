@@ -192,7 +192,6 @@ app.get('api/users/coin/userData',function(req, res){
   })
 });
 
-
 app.post('/api/users/coin/buy', (req, res)=>{
   let name = req.body;
   console.log(name);

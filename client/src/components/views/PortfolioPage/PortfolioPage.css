@@ -6,3 +6,8 @@ body{
 #balance{
     color:#DBE0D5;
 }
+
+.balance input{
+    text-align: center;
+    font-size:150px;
+}

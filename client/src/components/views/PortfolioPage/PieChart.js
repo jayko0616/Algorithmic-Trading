@@ -15,11 +15,10 @@ function PieChart() {
                 sss = sss.replace('[', '');
                 sss = sss.replace(']', '');
                 console.log("str is..", str)
-                setStr(sss);
-                
+                setStr(sss);    
         })
     }
-    
+
     dictionary();
     var rst = [];
     
@@ -36,7 +35,7 @@ function PieChart() {
 
     //const data = arr;
     //const data =
-   const data = [{'label': 'BTC', 'value': 8991.58114}, {'label': 'KRW', 'value': 13012.43082246}, {'label': 'ETH', 'value': 7987.758740000001}];
+   const data = [{'label': 'BTC', 'value': 8991.58114}, {'label': 'KRW', 'value': 13012.43082246}, {'label': 'ETH', 'value': 7987.758740000001}, {'label': 'XRP', 'value': 8003.123}];
     const  outerRadius = 200;
     const  innerRadius = 90;
   

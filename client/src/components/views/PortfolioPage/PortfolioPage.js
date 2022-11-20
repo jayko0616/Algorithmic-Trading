@@ -18,15 +18,6 @@ function PortfolioPage (){
   const [Balance, setBalance] = useState("0");
 
   var userBalance = "";
-  var dic = "";
-
-  const dictionary = () => {
-    dispatch(getDictionary())
-    .then(response => {
-      dic = response.payload.dictionary;
-    })
-    return dic;
-  }
 
   const balance = () => {
     dispatch(getBalance())
@@ -39,10 +30,6 @@ function PortfolioPage (){
   }
 
   balance();
-
-  
-
-  
 
     return (
       <div className='layout'>

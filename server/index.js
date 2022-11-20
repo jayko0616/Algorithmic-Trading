@@ -179,10 +179,8 @@ app.post('/api/users/coin/dictionary', (req, res) => {
   });
 
   result_02.stderr.on('data', function(data) {
-    console.log("딕셔너리 에러났어요.");
+    console.log(err);
   });
-
-  
 })
 
 

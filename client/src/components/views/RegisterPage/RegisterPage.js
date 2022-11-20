@@ -18,10 +18,7 @@ function RegisterPage() {
   const [Password, setPassword] = useState("");
   const [ConfirmPassword, setConfirmPassword] = useState("");
   const [ApiKey, setApiKey] = useState("");
-  //const [ConfirmApiKey, setConfirmApiKey] = useState("");
   const [AccessKey, setAccessKey] = useState("");
-  //const [ConfirmAccessKey, setConfirmAccessKey] = useState("");
-  
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value)
@@ -77,14 +74,6 @@ function RegisterPage() {
       coinApiKey: ApiKey,
       accessKey: AccessKey
     }
-
-    console.log(Email);
-    console.log(Name);
-    console.log(PhoneNumber);
-    console.log(ApiKey);
-    console.log(AccessKey);
-
-    console.log(body);
 
     dispatch(registerUser(body))
       .then(response => {

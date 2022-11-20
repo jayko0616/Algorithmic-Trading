@@ -43,10 +43,6 @@ function LoginPage() {
       accessKey: AccessKey
     }
 
-    console.log(Email);
-    console.log(Password);
-    console.log(body);
-
     dispatch(loginUser(body))
       .then(response => {
         if(response.payload.loginSuccess) {

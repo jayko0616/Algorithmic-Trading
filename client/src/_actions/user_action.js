@@ -99,7 +99,7 @@ export function getDictionary(dataToSubmit) {
   }
 }
 
-export function getInformation(dataToSubmit){
+export function getInformation(){
   const request = axios.get('api/users/coin/userData')
   .then(response => response.data)
 

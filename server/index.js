@@ -178,17 +178,18 @@ app.post('/api/users/coin/dictionary', (req, res) => {
     })
   });
 
-  result_02.stderr.on('data', function(data) {
-    console.log(err);
-  });
 })
 
 app.get('api/users/coin/userData',function(req, res){
-  var info = User.getInfo()
-  res.json({
-    email: info.email,
-    name: info.name,
-    phone: info.phone
+  console.log("서버로 요청은 들어옴")
+  User.getInfo((err, info)=> {
+    if(err) return console.log("user data err");
+    console.log("userdata 돼")
+    res.json({
+      email: info.email,
+      name: info.name,
+      phone: info.phone
+    })
   })
 });
 

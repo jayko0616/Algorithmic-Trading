@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import '../MainPage/MainPage.css';
@@ -20,6 +20,7 @@ function MyinformationPage (){
       email: Email,
       phone: phone,
     }
+    /*
     dispatch(getInformation(body))
     .then(response => {
       if(response.payload.email) {
@@ -36,6 +37,22 @@ function MyinformationPage (){
         console.log("실패");
       }
     })
+    */
+
+   useEffect(() => {
+    dispatch(getInformation())
+    .then(response => {
+      console.log(response.payload)
+    
+        setEmail(response.payload.email)
+  
+        setname(response.payload.name)
+      
+      
+        setphone(response.payload.phone)
+      
+    })
+   });
 
     return (
         <div className='layout'>

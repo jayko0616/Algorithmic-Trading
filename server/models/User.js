@@ -153,8 +153,7 @@ userSchema.methods.compareAccessApiKey = function(plainAccessKey, cb) {
 }
 
 userSchema.methods.getInfo = function(cb) {
-    var user = this;
-
+    console.log("getinfo!")
     const info = {
         emiel: this.email,
         name: this.name,
@@ -165,7 +164,6 @@ userSchema.methods.getInfo = function(cb) {
         return cb(err);
     }
     cb(null, info)
-
 }
 
 const User = mongoose.model('User',userSchema)

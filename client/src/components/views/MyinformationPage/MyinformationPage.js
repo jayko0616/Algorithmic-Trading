@@ -11,7 +11,7 @@ import { getInformation } from '../../../_actions/user_action';
 
 function MyinformationPage (){ 
     const dispatch = useDispatch();
-    const [Email, setEmail] = useState("jayco@naver.com");
+    const [Email, setEmail] = useState("jayco1@naver.com");
     const [name, setname] = useState("제이코");
     const [phone, setphone] = useState("010-2060-7486");
   

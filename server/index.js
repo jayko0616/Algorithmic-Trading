@@ -12,6 +12,7 @@ const cors = require("cors");
 
 var access;
 var secret;
+
 //application/x-www-form-urlencoded 이렇게 된 데이터를 분석해서 가져올 수 있게 함
 app.use(bodyParser.urlencoded({extended: true}));
 

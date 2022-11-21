@@ -7,7 +7,6 @@ const port = 5000;
 const bodyParser = require('body-parser');
 
 
-
 let recvData = "";
 var coin_real_data = [];  
 const coininfo = [
@@ -147,7 +146,7 @@ async function start() {
 
         }
     }
-    setInterval(print,1000);
+    setInterval(print,10000);
 }
 
 async function local(){
@@ -158,7 +157,7 @@ async function local(){
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../Coin_Trade/buy.py']);
+          const result = spawn('python', ['../../../server/AutomaticTrading/buy.py']);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {
@@ -177,7 +176,7 @@ async function local(){
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../Coin_Trade/sell.py']);
+          const result = spawn('python', ['../../../server/AutomaticTrading/sell.py']);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {

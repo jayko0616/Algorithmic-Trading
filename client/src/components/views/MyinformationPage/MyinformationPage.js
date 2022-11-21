@@ -20,10 +20,11 @@ function MyinformationPage (){
       email: Email,
       phone: phone,
     }
-    /*
+
     dispatch(getInformation(body))
     .then(response => {
       if(response.payload.email) {
+        console.log("너 돼?");
         setEmail(response.payload.email)
       }
       else if(response.payload.name){

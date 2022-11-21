@@ -7,7 +7,7 @@ import datetime
 def doAutomaticTrading(access, secret, ticker):
     upbit = pyupbit.Upbit(access,  secret)
 
-    def cal_target(ticker):
+def cal_target(ticker):
     df = pyupbit.get_ohlcv(ticker, "day")
     yesterday = df.iloc[-2]
     today = df.iloc[-1]

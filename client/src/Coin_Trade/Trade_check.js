@@ -10,10 +10,11 @@ import Trade_info from "./Trade_info";
 // import Coin_mp from "../Coin_chart/Coin_mp";
 import { tradingStart } from "../_actions/user_action";
 import { useDispatch } from "react-redux";
+import Trade_auto from "./Trade_auto";
 
 function Trade_check(){
 
-    const dispatch = useDispatch();
+    const [coin, set_coin] = useState("");
 
     const [sell_price, set_sell_price] = useState(0);
     const [quantity, set_quantity ] = useState(0);
@@ -46,19 +47,20 @@ function Trade_check(){
         setIsBuying(3);
     }
 
-    const onAutoTradingHandler = (event) => {
+    const onAutoTradingHandler = (target) => {
         //'api/users/coin/traindg' 으로 요청 보내슈 
-        if(tradingBtn === 1 ){
-            setTradingBtn(2);
-            dispatch(tradingStart())
-        }
-        else{
-            setTradingBtn(1);
-        }
+        // if(tradingBtn === 1 ){
+            // setTradingBtn(2);
+            console.log(target.value);
+            set_coin(target.value);
+        // }
+        // else{
+        //     setTradingBtn(1);
+        // }
     }
 
-    function getTargetCoin(value){
-        console.log(value)
+    const getTargetCoin = () =>{
+        console.log("zxdas")
     }
 
 
@@ -66,7 +68,7 @@ function Trade_check(){
         <TableRow className="Table_trade">
             <div>
                 <form name="tradingStart" onSubmit={onAutoTradingHandler}>
-                    <select name="coins" required>
+                    <select name="coins" onChange={getTargetCoin()} required>
                         <option value='' selected>종목 선택</option>
                         <option value="BTC">BTC(비트코인)</option>
                         <option value="ETH">ETH(이더리움)</option>

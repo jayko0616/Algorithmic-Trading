@@ -157,7 +157,10 @@ async function local(){
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../../../server/AutomaticTrading/buyMarketOrder.py', name.coin_name_]);
+          const result = spawn('python', ['../../../server/AutomaticTrading/buyMarketOrder.py',
+mAcgWp7XhuCfd5ezCjRY4Tiv8mj33Qy8jXi37V8S, 
+Wb3KyxfXFzpJ6NvrHRSrDeBTvXbsxcFNGWF0Khu1,
+name.coin_name_]);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {
@@ -175,7 +178,10 @@ async function local(){
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../../../server/AutomaticTrading/sellMarketOrder.py', name.coin_name_]);
+          const result = spawn('python', ['../../../server/AutomaticTrading/sellMarketOrder.py', 
+          mAcgWp7XhuCfd5ezCjRY4Tiv8mj33Qy8jXi37V8S, 
+          Wb3KyxfXFzpJ6NvrHRSrDeBTvXbsxcFNGWF0Khu1,
+          name.coin_name_]);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {

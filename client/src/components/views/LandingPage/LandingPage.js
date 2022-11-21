@@ -30,32 +30,6 @@ function LandingPage() {
       })
   }
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-
-    //auth; 로그인 상태 확인 
-    axios.get('/api/users/auth')
-
-    //apikey를 입력받아서 등록된 key와 일치하는지 확인 
-    const apikey = prompt("주식 API KEY를 입력하세요")
-    //setCoinApiKey(apikey.toString)
-    
-    console.log(apikey)
-
-    let body = {
-      coinApiKey: apikey
-    }
-
-    dispatch(tradingStart(body)
-    .then((response) => {
-      if (response.payload.startSuccess) {
-        navigate('/main');
-      } else {
-        alert('Error', response.payload.message);
-      }
-    }))
-  }
-
   const onLoginHandler = (event) => {
     event.preventDefault();
     navigate("/login");
@@ -77,11 +51,6 @@ function LandingPage() {
         <form onSubmit={onMainHandler}>
           <button type="submit" id="mainPage"  alt="메인페이지로 이동하기">
             메인 페이지
-          </button>
-        </form>
-        <form onSubmit={onSubmitHandler}>
-          <button type="submit" id="tradingStartBtn"  alt="자동매매 시작하기">
-            자동매매 시작
           </button>
         </form>
         <br></br>

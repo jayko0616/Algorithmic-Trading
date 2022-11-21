@@ -180,7 +180,7 @@ app.post('/api/users/coin/dictionary', (req, res) => {
 
 })
 
-app.get('api/users/coin/userData',function(req, res){
+app.get('api/users/coin/userData',(req, res)=>{
   console.log("서버로 요청은 들어옴")
   User.getInfo((err, info)=> {
     if(err) return console.log("user data err");

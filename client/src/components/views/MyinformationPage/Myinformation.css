@@ -1,0 +1,39 @@
+.infoframe{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    width: 100%;
+}
+
+#emailinfo{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+}
+#nameinfo{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+
+}
+#phoneinfo{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px;
+    text-align: center;
+}
+#setinfo{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+
+}
+
+.infoframe button {
+    border: none;
+    text-align: center;
+    font-size:large;
+    font-weight: bold;
+    margin: 20px;
+}

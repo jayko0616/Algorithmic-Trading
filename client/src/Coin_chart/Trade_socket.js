@@ -157,7 +157,7 @@ async function local(){
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../../../server/AutomaticTrading/buy.py']);
+          const result = spawn('python', ['../../../server/AutomaticTrading/buyMarketOrder.py', name.coin_name_]);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {
@@ -172,11 +172,10 @@ async function local(){
       app.post('/api/users/coin/sell', (req, res)=>{
         let name = req.body;
         console.log(name);
-        // console.log('탐정이죠 ');
         const spawn = require('child_process').spawn;
     
     // 2. spawn을 통해 "python 파이썬파일.py" 명령어 실행
-          const result = spawn('python', ['../../../server/AutomaticTrading/sell.py']);
+          const result = spawn('python', ['../../../server/AutomaticTrading/sellMarketOrder.py', name.coin_name_]);
     
     // 3. stdout의 'data'이벤트리스너로 실행결과를 받는다.
           result.stdout.on('data', function(data) {
@@ -192,7 +191,4 @@ async function local(){
 }
 
 start()
-// local()
-// console.log(i);
-// tradeServerConnect();
-// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+local()

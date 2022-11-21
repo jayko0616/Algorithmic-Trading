@@ -2,6 +2,8 @@ import React from "react";
 import {useEffect, useState } from "react";
 import { Button} from 'react-bootstrap';
 import selling_Datasend from "./selling_Datasend";
+import {useSelector} from 'react-redux';
+
 
 const Trade_selling = () =>{
     const [sell_price, set_sell_price] = useState(0);
@@ -9,7 +11,7 @@ const Trade_selling = () =>{
     const [sum_price , set_sum_price] = useState(0);
     const [checkValue, setCheckValue ] = useState('');
     const [isBuying, setIsBuying] = useState(true);
-
+    const coin_name_ = useSelector(Reducer => Reducer.chartState.str);
  
     const onChange_sell = (e) =>{
         set_sell_price(e.target.value);
@@ -90,7 +92,7 @@ const Trade_selling = () =>{
         </div>
         <div className="clearsell_btn">
         <Button className="clear_btn" onClick={clear_fun}>초기화</Button>   
-        <Button className="sell_btn" onClick={()=>selling_Datasend(sell_price, quantity,sum_price)}>매도</Button>
+        <Button className="sell_btn" onClick={()=>selling_Datasend(sell_price, quantity,sum_price,coin_name_)}>매도</Button>
         </div>
     </div>
     )

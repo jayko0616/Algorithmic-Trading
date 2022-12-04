@@ -35,7 +35,7 @@ function PieChart() {
 
     //const data = arr;
     //const data =
-   const data = [{'label': 'BTC', 'value': 8991.58114}, {'label': 'KRW', 'value': 13012.43082246}, {'label': 'ETH', 'value': 7987.758740000001}];
+   const data = [{'label': 'KRW', 'value': 9200.7221}, {'label': 'DOGE', 'value': 5499.143234}];
     const  outerRadius = 200;
     const  innerRadius = 90;
   
